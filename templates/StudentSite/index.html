@@ -1,0 +1,197 @@
+{% load static %}
+
+<html>
+<title>
+Class Calenders
+</title>
+<head>
+  <link rel="stylesheet" href="{% static "stylesheet.css" %}" />
+<link rel="shortcut icon" href="{% static 'kentdenver.png' %}">
+<script>
+</script>
+</head>
+<body>
+
+<div id = "hz">
+</div>
+
+<div id = "vt">
+</div>
+
+
+<div id = "name">
+<i>Kent Denver</i>
+</div>
+
+<div id = "header">
+Class Calender Sign-Up
+</div>
+
+<div id = "contact">
+Google Calenders<br>
+Alex Clement <br>
+aclement@kentdenver.org
+</div>
+
+<div id = "top">
+</div>
+
+<div id = "period">
+Period 1 <br><br>
+Period 2 <br><br>
+Period 3 <br><br>
+Period 4 <br><br>
+Period 5 <br><br>
+Period 6 <br><br>
+Period 7 <br><br>
+</div>
+
+<div id = "label">
+	<div style = "position: absolute; top: 10px">
+	Class:
+        <select id = "border" style = "left: 75px">
+        {% for item in period_1_cals %}
+            <option value = "test">test</option>
+        {% endfor %}
+        </select>
+	</div>
+
+	<div style = "position: absolute; top: 10px; left: 320px;">
+	Teacher:
+		<div id = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 10px; left: 670px;">
+	ID:
+		<div id = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div id = "label">
+	<div style = "position: absolute; top: 80px">
+	Class:
+		<div id = "border" style = "left: 75px">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 80px; left: 320px;">
+	Teacher:
+		<div id = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 80px; left: 670px;">
+	ID:
+		<div id = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div id = "label">
+	<div style = "position: absolute; top: 150px">
+	Class:
+		<div id = "border" style = "left: 75px">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 150px; left: 320px;">
+	Teacher:
+		<div id = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 150px; left: 670px;">
+	ID:
+		<div id = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div id = "label">
+	<div style = "position: absolute; top: 220px">
+	Class:
+		<div id = "border" style = "left: 75px">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 220px; left: 320px;">
+	Teacher:
+		<div id = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 220px; left: 670px;">
+	ID:
+		<div id = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div id = "label">
+	<div style = "position: absolute; top: 290px">
+	Class:
+		<div id = "border" style = "left: 75px">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 290px; left: 320px;">
+	Teacher:
+		<div id = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 290px; left: 670px;">
+	ID:
+		<div id = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div id = "label">
+	<div style = "position: absolute; top: 360px">
+	Class:
+		<div id = "border" style = "left: 75px">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 360px; left: 320px;">
+	Teacher:
+		<div id = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 360px; left: 670px;">
+	ID:
+		<div id = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div id = "label">
+	<div style = "position: absolute; top: 430px">
+	Class:
+		<div id = "border" style = "left: 75px">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 430px; left: 320px;">
+	Teacher:
+		<div id = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 430px; left: 670px;">
+	ID:
+		<div id = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<img src = "{%  static 'mtnBackground.png' %}" style = "position: absolute; top: 0px; left: 5px; width: 1270px; height: 250px; z-index: -2">
+
+
+</body>
+</html>
+
