@@ -51,7 +51,7 @@ Period 7 <br><br>
 	Class:
         <select id = "border" style = "left: 75px">
         {% for item in period_1_cals %}
-            <option value = "test">test</option>
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
         </select>
 	</div>
@@ -72,8 +72,11 @@ Period 7 <br><br>
 <div id = "label">
 	<div style = "position: absolute; top: 80px">
 	Class:
-		<div id = "border" style = "left: 75px">
-		</div>
+		 <select id = "border" style = "left: 75px">
+        {% for item in period_2_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
 	</div>
 
 	<div style = "position: absolute; top: 80px; left: 320px;">
@@ -92,8 +95,11 @@ Period 7 <br><br>
 <div id = "label">
 	<div style = "position: absolute; top: 150px">
 	Class:
-		<div id = "border" style = "left: 75px">
-		</div>
+		 <select id = "border" style = "left: 75px">
+        {% for item in period_3_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
 	</div>
 
 	<div style = "position: absolute; top: 150px; left: 320px;">
@@ -112,8 +118,11 @@ Period 7 <br><br>
 <div id = "label">
 	<div style = "position: absolute; top: 220px">
 	Class:
-		<div id = "border" style = "left: 75px">
-		</div>
+		 <select id = "border" style = "left: 75px">
+        {% for item in period_4_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
 	</div>
 
 	<div style = "position: absolute; top: 220px; left: 320px;">
@@ -132,8 +141,11 @@ Period 7 <br><br>
 <div id = "label">
 	<div style = "position: absolute; top: 290px">
 	Class:
-		<div id = "border" style = "left: 75px">
-		</div>
+		 <select id = "border" style = "left: 75px">
+        {% for item in period_5_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
 	</div>
 
 	<div style = "position: absolute; top: 290px; left: 320px;">
@@ -152,8 +164,11 @@ Period 7 <br><br>
 <div id = "label">
 	<div style = "position: absolute; top: 360px">
 	Class:
-		<div id = "border" style = "left: 75px">
-		</div>
+		 <select id = "border" style = "left: 75px">
+        {% for item in period_6_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
 	</div>
 
 	<div style = "position: absolute; top: 360px; left: 320px;">
@@ -172,14 +187,17 @@ Period 7 <br><br>
 <div id = "label">
 	<div style = "position: absolute; top: 430px">
 	Class:
-		<div id = "border" style = "left: 75px">
-		</div>
+		 <select id = "border" style = "left: 75px">
+        {% for item in period_7_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
 	</div>
 
 	<div style = "position: absolute; top: 430px; left: 320px;">
 	Teacher:
-		<div id = "border" style = "left: 100px;">
-		</div>
+		<div id = "border" style = "left: 100px">
+        </div>
 	</div>
 
 	<div style = "position: absolute; top: 430px; left: 670px;">
