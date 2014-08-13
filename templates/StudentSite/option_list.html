@@ -1,0 +1,9 @@
+{% if options %}
+{{ field_title }}
+    <select id = "border" style = "left: 100px" class="period1teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+        </select>
+{% endif %}

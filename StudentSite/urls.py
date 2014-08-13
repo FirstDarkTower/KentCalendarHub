@@ -5,4 +5,6 @@ __author__ = 'Jarrek R. Holmes'
 
 urlpatterns = patterns('',
                        url(r"^$",views.index, name = 'index'),
+                       url(r"^teacher_list/$",views.teacher_list, name='teacher_list'),
+                       url(r"^cal_id/$", views.get_cal_id, name='cal_key'),
 )

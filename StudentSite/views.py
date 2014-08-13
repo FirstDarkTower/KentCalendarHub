@@ -15,5 +15,39 @@ def index(request):
 
     return render_to_response("StudentSite/index.html", context_list, context)
 
+def get_teachers(class_name = "", period = 1):
+    options = []
+    if class_name and period:
+        options = Calendar.objects.filter(class_title__istartswith=class_name, period = period )
+    return options
 
+def teacher_list(request):
+    context = RequestContext(request)
+    options = []
+    class_name = ""
+    period = 1
+    if request.method == "GET":
+        class_name = request.GET.get('class_name')
+        period = request.GET.get('period')
+    options = get_teachers(class_name, period)
+    return render_to_response('StudentSite/option_list.html', {'options': options, 'field_title' : "Teacher:"}, context)
 
+def get_cal_key(class_name ="", period= 1, teacher_name = ""):
+    key = ""
+    if class_name and period and teacher_name:
+        key = Calendar.objects.filter(class_title = class_name, period = period, teacher_name = teacher_name)[0].cal_id
+    return key
+
+def get_cal_id(request):
+    context = RequestContext(request)
+    class_name = ""
+    period = 1
+    teacher_name = ""
+    if request.method == "GET":
+        class_name = request.GET.get('class_name')
+        period = request.GET.get('period')
+        teacher_name = request.GET.get('teacher_name')
+
+    key = get_cal_key(class_name, period, teacher_name)
+    print "here"
+    return render_to_response('StudentSite/single_box.html', {'key': key, 'field_title' : "ID:"}, context)

@@ -5,7 +5,7 @@
 Class Calenders
 </title>
 <head>
-  <link rel="stylesheet" href="{% static "stylesheet.css" %}" />
+  <link rel="stylesheet" href="{% static "css/stylesheet.css" %}" />
 <link rel="shortcut icon" href="{% static 'kentdenver.png' %}">
 <script>
 </script>
@@ -46,23 +46,23 @@ Period 6 <br><br>
 Period 7 <br><br>
 </div>
 
-<div id = "label">
+<div id = "label" class="period1div">
 	<div style = "position: absolute; top: 10px">
 	Class:
-        <select id = "border" style = "left: 75px">
+        <select id = "border" style = "left: 75px" class="period1class">
         {% for item in period_1_cals %}
             <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
         </select>
 	</div>
 
-	<div style = "position: absolute; top: 10px; left: 320px;">
-	Teacher:
+	<div style = "position: absolute; top: 10px; left: 320px;" class="period1teacher">
+    Teacher:
 		<div id = "border" style = "left: 100px;">
 		</div>
 	</div>
 
-	<div style = "position: absolute; top: 10px; left: 670px;">
+	<div style = "position: absolute; top: 10px; left: 670px;" class="period1calid">
 	ID:
 		<div id = "border" style = "left: 50px;">
 		</div>
@@ -209,7 +209,8 @@ Period 7 <br><br>
 
 <img src = "{%  static 'mtnBackground.png' %}" style = "position: absolute; top: 0px; left: 5px; width: 1270px; height: 250px; z-index: -2">
 
-
+<script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
+<script src="{% static "js/studentsite-ajax,js.js" %}"></script>
 </body>
 </html>
 
