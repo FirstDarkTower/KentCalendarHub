@@ -1,51 +1,6 @@
+{% extends 'studentsite/base.html' %}
 {% load static %}
-
-<html>
-<title>
-Class Calendars
-</title>
-<head>
-    <link rel="stylesheet" href="{% static "css/stylesheet.css" %}" />
-    <link rel="shortcut icon" href="{% static 'kentdenver.png' %}">
-<script>
-</script>
-</head>
-<body>
-
-<div class = "hz">
-</div>
-
-<div class = "vt">
-</div>
-
-
-<div class = "name">
-<i>Kent Denver</i>
-</div>
-
-<div class = "header">
-Class Calendar Sign-Up
-</div>
-
-<div class = "contact">
-Google Calendars<br>
-Alex Clement <br>
-aclement@kentdenver.org
-</div>
-
-<div class = "top">
-</div>
-
-<div class = "period">
-Period 1 <br><br>
-Period 2 <br><br>
-Period 3 <br><br>
-Period 4 <br><br>
-Period 5 <br><br>
-Period 6 <br><br>
-Period 7 <br><br>
-</div>
-
+{% block body_block %}
 <div class = "label" class="period1div">
 	<div style = "position: absolute; top: 10px">
 	Class:
@@ -206,11 +161,5 @@ Period 7 <br><br>
 		</div>
 	</div>
 </div>
-
-<img src = "{%  static 'mtnBackground.png' %}" style = "position: absolute; top: 0px; left: 5px; width: 1270px; height: 250px; z-index: -2">
-
-<script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
-<script src="{% static "js/studentsite-ajax,js.js" %}"></script>
-</body>
-</html>
+{% endblock %}
 
