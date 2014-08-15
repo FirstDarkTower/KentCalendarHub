@@ -1,5 +1,5 @@
 #hz{
-width: 1260;
+width: 100%;
 position: absolute;
 top: 200px;
 border-style: outset;
@@ -8,7 +8,7 @@ border-width: 2px;
 }
 
 .vt{
-height: 475;
+height: 65%;
 position: absolute;
 left: 200px;
 top: 215px;
@@ -23,6 +23,16 @@ font-size: 50px;
 left: 15px;
 }
 
+.menu{
+width: 100%;
+font-size: 25px;
+background-color: #990000;
+/**
+    * color: #CC0000
+*/
+
+}
+
 .header{
 position: absolute;
 top:75px;
@@ -32,7 +42,7 @@ font-size: 80px;
 
 .contact{
 position: absolute;
-left: 1050px;
+left: 80%;
 top: 50px;
 font-size: 20px;
 text-align: right;
@@ -64,9 +74,11 @@ width: 200px;
 border-style: solid;
 border-color: black;
 border-width: 1px;
+color: black;
 }
 
 .keytext{
    font-size: 12px;
+    color: black;
 }
 

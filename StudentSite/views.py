@@ -13,7 +13,6 @@ def index(request):
     context_list["period_5_cals"] = remove_duplicates(Calendar.objects.filter(period = 5).order_by('class_title'))
     context_list["period_6_cals"] = remove_duplicates(Calendar.objects.filter(period = 6).order_by('class_title'))
     context_list["period_7_cals"] = remove_duplicates(Calendar.objects.filter(period = 7).order_by('class_title'))
-
     return render_to_response("StudentSite/index.html", context_list, context)
 
 def get_teachers(class_name = "", period = 1):
