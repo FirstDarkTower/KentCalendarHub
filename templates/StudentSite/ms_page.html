@@ -2,9 +2,8 @@
 {% load static %}
 {% block body_block %}
 <div class = "label" class="period1div">
-	<div style = "position: absolute; top: 10px">
-	Class:
-        <select class = "border" style = "left: 75px" id="period1class">
+	<div>
+        <select class = "border" style = "left: 6%" id="period1class">
                  <option value=""></option>
         {% for item in period_1_cals %}
             <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
@@ -12,137 +11,168 @@
         </select>
 	</div>
 
-	<div style = "position: absolute; top: 10px; left: 320px;" id="period1tdiv">
-    Teacher:
-		<div class = "border" style = "left: 100px;">
+	<div style = "position: absolute; left: 25%;" id="period1tdiv">
+		<div class = "border" >
 		</div>
 	</div>
 
-	<div style = "position: absolute; top: 10px; left: 670px;" id="period1calid">
-	ID:
-		<div class = "border" style = "left: 50px;">
+	<div style = "position: absolute; left: 40%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
+
+    <div class = "period">
+        Period 1
+    </div>
 </div>
 
-<div class = "label">
-	<div style = "position: absolute; top: 80px">
-	Class:
-		 <select class = "border" style = "left: 75px" id="period2class">
-                  <option value=""></option>
+<div class = "label" class="period2div" style = "top: 52%">
+	<div>
+        <select class = "border" style = "left: 6%" id="period2class">
+                 <option value=""></option>
         {% for item in period_2_cals %}
             <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
         </select>
 	</div>
 
-	<div style = "position: absolute; top: 80px; left: 320px;" id="period2tdiv">
-	Teacher:
-		<div class = "border" style = "left: 100px;">
+	<div style = "position: absolute; left: 25%;" id="period2tdiv">
+		<div class = "border" >
 		</div>
 	</div>
 
-	<div style = "position: absolute; top: 80px; left: 670px;" id="period2calid">
-	ID:
-		<div class = "border" style = "left: 50px;">
+	<div style = "position: absolute; left: 40%; " id="period2calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
+<div class = "period" style = "top: 8%;">
+        Period 2
+    </div>
 </div>
 
-<div class = "label">
-	<div style = "position: absolute; top: 150px">
-	Class:
-		 <select class = "border" style = "left: 75px" id="period3class">
-                  <option value=""></option>
+<div class = "label" class="period3div" style = "top: 62%">
+	<div>
+        <select class = "border" style = "left: 6%" id="period3class">
+                 <option value=""></option>
         {% for item in period_3_cals %}
             <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
         </select>
 	</div>
 
-	<div style = "position: absolute; top: 150px; left: 320px;" id="period3tdiv">
-	Teacher:
-		<div class = "border" style = "left: 100px;">
+	<div style = "position: absolute; left: 25%;" id="period3tdiv">
+		<div class = "border" >
 		</div>
 	</div>
 
-	<div style = "position: absolute; top: 150px; left: 670px;" id="period3calid">
-	ID:
-		<div class = "border" style = "left: 50px;">
+	<div style = "position: absolute; left: 40%; " id="period3calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
+<div class = "period" style = "top: 16%;">
+        Period 3
+    </div>
 </div>
 
-<div class = "label">
-	<div style = "position: absolute; top: 220px" >
-	Class:
-		 <select class = "border" style = "left: 75px" id="period4class">
-                  <option value=""></option>
+	<div class = "label" class="period4div" style = "top: 72%">
+	<div>
+        <select class = "border" style = "left: 6%" id="period4class">
+                 <option value=""></option>
         {% for item in period_4_cals %}
             <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
         </select>
 	</div>
 
-	<div style = "position: absolute; top: 220px; left: 320px;" id="period4tdiv">
-	Teacher:
-		<div class = "border" style = "left: 100px;">
+	<div style = "position: absolute; left: 25%;" id="period4tdiv">
+		<div class = "border" >
 		</div>
 	</div>
 
-	<div style = "position: absolute; top: 220px; left: 670px;" id="period4calid">
-	ID:
-		<div class = "border" style = "left: 50px;">
+	<div style = "position: absolute; left: 40%; " id="period4calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
+    <div class = "period" style = "top: 24%;">
+        Period 4
+    </div>
 </div>
 
-<div class = "label">
-	<div style = "position: absolute; top: 290px">
-	Class:
-		 <select class = "border" style = "left: 75px" id="period5class">
-                  <option value=""></option>
+<div class = "label" class="period5div" style = "top: 82%">
+	<div>
+        <select class = "border" style = "left: 6%" id="period5class">
+                 <option value=""></option>
         {% for item in period_5_cals %}
             <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
         </select>
 	</div>
 
-	<div style = "position: absolute; top: 290px; left: 320px;" id="period5tdiv">
-	Teacher:
-		<div class = "border" style = "left: 100px;">
+	<div style = "position: absolute; left: 25%;" id="period5tdiv">
+		<div class = "border" >
 		</div>
 	</div>
 
-	<div style = "position: absolute; top: 290px; left: 670px;" id="period5calid">
-	ID:
-		<div class = "border" style = "left: 50px;">
+	<div style = "position: absolute; left: 40%; " id="period5calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
+<div class = "period" style = "top: 32%;">
+        Period 5
+    </div>
 </div>
 
-<div class = "label">
-	<div style = "position: absolute; top: 360px">
-	Class:
-		 <select class = "border" style = "left: 75px" id="period6class">
-         <option value=""></option>
+<div class = "label" class="period6div" style = "top: 92%">
+	<div>
+        <select class = "border" style = "left: 6%" id="period6class">
+                 <option value=""></option>
         {% for item in period_6_cals %}
             <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
         </select>
 	</div>
 
-	<div style = "position: absolute; top: 360px; left: 320px;" id="period6tdiv">
-	Teacher:
-		<div class = "border" style = "left: 100px;">
+	<div style = "position: absolute; left: 25%;" id="period6tdiv">
+		<div class = "border" >
 		</div>
 	</div>
 
-	<div style = "position: absolute; top: 360px; left: 670px;" id="period6calid">
-	ID:
-		<div class = "border" style = "left: 50px;">
+	<div style = "position: absolute; left: 40%; " id="period6calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
+<div class = "period" style = "top: 40%;">
+        Period 6
+    </div>
 </div>
 
+    <nav class="navbar navbar-inverse" role="navigation" style = "position: absolute;
+height: 7.5%;
+width: 90%;
+left: 5%;
+top: 28%;
+border-radius: 25px;
+background-color: #990000">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.kentdenver.org" style = "position: absolute; left: 80%">Kent Denver</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ><a href="/studentsite/" >Upper School</a></li>
+        <li><a href="/studentsite/ms_page" style = "color: white">Middle School</a></li>
+        <li><a href="/studentsite/">Other Calendars</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 {% endblock %}
