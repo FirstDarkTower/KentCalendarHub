@@ -40,3 +40,5 @@ from StudentSite import views
 # print_list(remove_duplicates(temp_list))
 
 print Calendar.objects.filter(period = 6, school__in=[7,8])
+
+print Calendar.objects.filter(period=7, teacher_name="Tuma, Virginia")
