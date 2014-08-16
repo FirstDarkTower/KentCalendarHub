@@ -41,4 +41,8 @@ from StudentSite import views
 
 print Calendar.objects.filter(period = 6, school__in=[7,8])
 
-print Calendar.objects.filter(period=7, teacher_name="Tuma, Virginia")
+print_list(Calendar.objects.filter(school=6))
+
+print Calendar.objects.filter(school = 6, class_title__in=["6th Latin Language Arts", "6th Physical Education", "6th Writing Skills", "6th Arts Rotation", "6th Latin"], period=1)
+
+print Calendar.objects.filter(school="ELEC")

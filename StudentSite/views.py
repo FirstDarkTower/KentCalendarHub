@@ -56,7 +56,6 @@ def remove_duplicates(list):
     new_list = []
     seen = set()
     for e in list:
-        print seen
         value = e.class_title
         if value not in seen:
             new_list.append(e)
@@ -74,4 +73,19 @@ def ms_page(request):
     context_list["period_5_cals"] = remove_duplicates(Calendar.objects.filter(period = 5, school__in=[7, 8]).order_by('class_title'))
     context_list["period_6_cals"] = remove_duplicates(Calendar.objects.filter(period = 6, school__in=[7, 8]).order_by('class_title'))
     return render_to_response("StudentSite/ms_page.html", context_list, context)
+
+def sixth_page(request):
+    context = RequestContext(request)
+    context_list = dict(science=Calendar.objects.filter(class_title__contains="Science", school=6).order_by('period'))
+    context_list["math"] = Calendar.objects.filter(class_title__contains="Math", school=6).order_by('period')
+    context_list["homeroom"] = Calendar.objects.filter(class_title__contains="Homeroom", school=6).order_by('teacher_name')
+    context_list["langarts"] = Calendar.objects.filter(class_title__contains="Language Arts", school=6).order_by('period')
+    context_list["socstud"] = Calendar.objects.filter(class_title__contains="Social Studies", school=6).order_by('period')
+    context_list["electivesyear"] = Calendar.objects.filter(school="ELEC", semester='14-15').order_by('class_title')
+    context_list["electivesS1"] = Calendar.objects.filter(school="ELEC", semester='S1').order_by('class_title')
+    context_list["electivesS2"] = Calendar.objects.filter(school="ELEC", semester='S2').order_by('class_title')
+    context_list["rotation"] = ["1", "2", "3", "4"]
+
+    return render_to_response("StudentSite/sixth.html", context_list, context)
+
 
