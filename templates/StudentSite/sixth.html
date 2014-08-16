@@ -1,4 +1,263 @@
-{% extends 'studentsite/base.html' %}
 {% load static %}
-{% block body_block %}
-{% endblock %}
+
+<html>
+<title>
+Class Calendars
+</title>
+<head>
+    <link rel="stylesheet" href="{% static "css/stylesheet.css" %}" />
+    <link rel="shortcut icon" href="{% static 'kentdenver.png' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap-fluid-adj.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
+<script src = "scrips.js">
+</script>
+</head>
+<body>
+
+
+<div class = "name">
+<i>Kent Denver</i>
+</div>
+
+<div class = "header">
+Class Calendar Sign-Up
+</div>
+
+<div class = "contact">
+Google Calendars<br>
+Alex Clement <br>
+aclement@kentdenver.org
+</div>
+
+<div class = "top">
+</div>
+
+ <nav class="navbar navbar-inverse" role="navigation" style = "position: absolute;
+height: 7.5%;
+width: 90%;
+left: 5%;
+top: 28%;
+border-radius: 25px;
+background-color: #990000">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.kentdenver.org" style = "position: absolute; left: 80%">Kent Denver</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/studentsite/">Upper School</a></li>
+        <li><a href="/studentsite/ms_page">Middle School</a></li>
+        <li  class = "active"><a href = "/studentsite/sixth_page"> Sixth Grade </a></li>
+        <li><a href="/studentsite/">Other Calendars</a></li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+
+<img src = "{%  static 'mtnBackground.png' %}" style = "position: absolute; top: 0px; width: 100%; height: 32%; z-index: -2">
+
+
+
+
+
+
+<div class = "period" style = "left: 61%; top : 40%; font-size: 18px;">
+Calendar ID:
+    </div>
+
+<div class = "label" class="period1div" style = "top: 38%">
+    <div style = "position: absolute; top: 8%; left: 5%; color: black; font-size: 18px;">
+       Teacher:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 12%; top: 8%;" id="period_1_teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 30%; top: 8%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div class = "period" style = "left: 0%;">
+        Homeroom
+    </div>
+</div>
+
+
+<div class = "label" class="period1div" style = "top: 52%">
+    <div style = "position: absolute; top: 8%; left: -1%; color: black; font-size: 18px;">
+       Science-Number:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 12%; top: 8%;" id="period_1_teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 30%; top: 8%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div style = "position: absolute; top: 16%; left: 1%; color: black; font-size: 18px;">
+       Math-Number:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 12%; top: 16%;" id="period_1_teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 30%; top: 16%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div style = "position: absolute; top: 24%; left: 2.5%; color: black; font-size: 18px;">
+       LA-Number:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 12%; top: 24%;" id="period_1_teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 30%; top: 24%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div style = "position: absolute; top: 32%; left: 2.5%; color: black; font-size: 18px;">
+       SS-Number:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 12%; top: 32%;" id="period_1_teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 30%; top: 32%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div class = "period" style = "left: 0%;">
+        Classes
+    </div>
+</div>
+
+
+<div class = "label" class="period1div" style = "top: 91%">
+    <div style = "position: absolute; top: 8%; left: 5%; color: black; font-size: 18px;">
+       Number:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 12%; top: 8%;" id="period_1_teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 30%; top: 8%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div class = "period" style = "left: 0%;">
+        Rotation
+    </div>
+</div>
+
+<div class = "label" class="period1div" style = "top: 106%">
+<div style = "position: absolute; top: 8%; left: 3.25%; color: black; font-size: 18px;">
+       Year Long:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 12%; top: 8%;" id="period_1_teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 30%; top: 8%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div style = "position: absolute; top: 16%; left: 2.5%; color: black; font-size: 18px;">
+       Semester 1:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 12%; top: 16%;" id="period_1_teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 30%; top: 16%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div style = "position: absolute; top: 24%; left: 2.5%; color: black; font-size: 18px;">
+       Semester 2:
+    </div>
+<div>
+       <select class="border" style = "position: absolute; left: 12%; top: 24%;" id="period_1_teacher">
+        <option value = ""></option>
+        {% for item in options %}
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 30%; top: 24%; " id="period1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div class = "period" style = "left: 0%;">
+        Electives
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
+<script src="{% static "js/studentsite-ajax,js.js" %}"></script>
+</body>
+</html>
+
