@@ -1,17 +1,9 @@
-#hz{
-width: 100%;
-position: absolute;
-top: 200px;
-border-style: outset;
-border-color: blue;
-border-width: 2px;
-}
 
 .vt{
-height: 65%;
+height: 60%;
 position: absolute;
-left: 200px;
-top: 215px;
+left: 15%;
+top: 38%;
 border-style: solid;
 border-color: black;
 border-width: 1px;
@@ -21,16 +13,6 @@ border-width: 1px;
 position: absolute;
 font-size: 50px;
 left: 15px;
-}
-
-.menu{
-width: 100%;
-font-size: 25px;
-background-color: #990000;
-/**
-    * color: #CC0000
-*/
-
 }
 
 .header{
@@ -55,20 +37,22 @@ height: 200px;
 
 .period{
 position: absolute;
-left: 75px;
-top: 219px;
 font-size: 30px;
+color: black;
+left: -8%;
+
 }
 
 .label{
 position: absolute;
-left: 250px;
+left: 12%;
+top:42%;
 font-size: 25px;
+width:100%;
 }
 
 .border{
 position: absolute;
-top: 5px;
 height: 20px;
 width: 200px;
 border-style: solid;
@@ -80,5 +64,58 @@ color: black;
 .keytext{
    font-size: 12px;
     color: black;
+    position: absolute;
+    left: 30px;
+}
+
+.menu_bar{
+position: absolute;
+height: 8%;
+width: 90%;
+left: 5%;
+top: 28%;
+border-radius: 25px;
+ background: -webkit-linear-gradient(#990000, #AA0000, #990000);
+  background: -o-linear-gradient(#990000, #AA0000, #990000);
+  background: -moz-linear-gradient(#990000, #AA0000, #990000);
+  background: linear-gradient(#990000, #AA0000, #990000);
+}
+
+.list{
+    position: absolute;
+    top: 37%;
+    z-index: 1;
+    color: black;
+    font-size:18;
+    width: 100%;
+}
+
+.nav-bar{
+    position: absolute;
+    top: 30.5%;
+    color: grey;
+    z-index: 1;
+    width: 100%;
+}
+.navigators{
+    position: absolute;
+    text-align: center;
+}
+
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: grey;
+}
+
+a:active {
+    color: grey;
 }
 

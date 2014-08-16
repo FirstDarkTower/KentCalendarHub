@@ -7,13 +7,43 @@ Class Calendars
 <head>
     <link rel="stylesheet" href="{% static "css/stylesheet.css" %}" />
     <link rel="shortcut icon" href="{% static 'kentdenver.png' %}">
-    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" />
-<script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap-fluid-adj.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
+<script src = "scrips.js">
 </script>
 </head>
 <body>
 
-<div class = "hz">
+<div class = "nav-bar">
+    <a href = "/studentsite/" class = "hyper"><div class = "navigators" style = " left: 15%; ">
+        <strong> Upper School
+    </div></a>
+    <a href = "" class = "hyper"><div class = "navigators" style = "left: 30%; ">
+        Middle School
+    </div></a>
+    <a href = "" class = "hyper"><div class = "navigators" style = " left: 45%; ">
+        Other Calendars
+    </div></a>
+    <a href = "https://www.kentdenver.org" class = "hyper"><div class = "navigators" style = " left: 75%; top: -5px; font-size: 22px;">
+        Kent Denver </strong>
+    </div> </a>
+</div>
+
+
+<div class = "list">
+    <div style = "position: absolute; left: 23%">
+        Class
+    </div>
+    <div style = "position: absolute; left: 42%">
+        Teacher
+    </div>
+    <div style = "position: absolute; left: 70%">
+        Calendar ID
+    </div>
 </div>
 
 <div class = "vt">
@@ -37,20 +67,13 @@ aclement@kentdenver.org
 <div class = "top">
 </div>
 
-<div class = "period">
-Period 1 <br>
-Period 2 <br>
-Period 3 <br>
-Period 4 <br>
-Period 5 <br>
-Period 6 <br>
-Period 7 <br>
+<div class = "menu_bar">
 </div>
 
 {% block body_block %}
 {% endblock %}
 
-<img src = "{%  static 'mtnBackground.png' %}" style = "position: absolute; top: 0px; left: 5px; width: 1270px; height: 250px; z-index: -2">
+<img src = "{%  static 'mtnBackground.png' %}" style = "position: absolute; top: 0px; width: 100%; height: 32%; z-index: -2">
 
 <script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
 <script src="{% static "js/studentsite-ajax,js.js" %}"></script>
