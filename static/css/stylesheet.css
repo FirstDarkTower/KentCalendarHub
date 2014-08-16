@@ -62,11 +62,13 @@ color: black;
 }
 
 .keytext{
+    position: absolute;
    font-size: 12px;
     color: black;
-    position: absolute;
-    left: 30px;
+    left: 60px;
 }
+
+
 
 .list{
     position: absolute;
