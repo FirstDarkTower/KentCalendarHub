@@ -68,19 +68,6 @@ color: black;
     left: 30px;
 }
 
-.menu_bar{
-position: absolute;
-height: 8%;
-width: 90%;
-left: 5%;
-top: 28%;
-border-radius: 25px;
- background: -webkit-linear-gradient(#990000, #AA0000, #990000);
-  background: -o-linear-gradient(#990000, #AA0000, #990000);
-  background: -moz-linear-gradient(#990000, #AA0000, #990000);
-  background: linear-gradient(#990000, #AA0000, #990000);
-}
-
 .list{
     position: absolute;
     top: 37%;
