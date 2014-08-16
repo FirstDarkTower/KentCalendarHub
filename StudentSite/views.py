@@ -18,7 +18,7 @@ def index(request):
 def get_teachers(class_name = "", period = 1):
     options = []
     if class_name and period:
-        options = Calendar.objects.filter(class_title__istartswith=class_name, period = period )
+        options = Calendar.objects.filter(class_title=class_name, period = period )
     return options
 
 def teacher_list(request):
@@ -56,6 +56,7 @@ def remove_duplicates(list):
     new_list = []
     seen = set()
     for e in list:
+        print seen
         value = e.class_title
         if value not in seen:
             new_list.append(e)
