@@ -1,0 +1,148 @@
+{% extends 'studentsite/base.html' %}
+{% load static %}
+{% block body_block %}
+<div class = "label" class="period1div">
+	<div style = "position: absolute; top: 10px">
+	Class:
+        <select class = "border" style = "left: 75px" id="period1class">
+                 <option value=""></option>
+        {% for item in period_1_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
+	</div>
+
+	<div style = "position: absolute; top: 10px; left: 320px;" id="period1tdiv">
+    Teacher:
+		<div class = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 10px; left: 670px;" id="period1calid">
+	ID:
+		<div class = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div class = "label">
+	<div style = "position: absolute; top: 80px">
+	Class:
+		 <select class = "border" style = "left: 75px" id="period2class">
+                  <option value=""></option>
+        {% for item in period_2_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
+	</div>
+
+	<div style = "position: absolute; top: 80px; left: 320px;" id="period2tdiv">
+	Teacher:
+		<div class = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 80px; left: 670px;" id="period2calid">
+	ID:
+		<div class = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div class = "label">
+	<div style = "position: absolute; top: 150px">
+	Class:
+		 <select class = "border" style = "left: 75px" id="period3class">
+                  <option value=""></option>
+        {% for item in period_3_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
+	</div>
+
+	<div style = "position: absolute; top: 150px; left: 320px;" id="period3tdiv">
+	Teacher:
+		<div class = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 150px; left: 670px;" id="period3calid">
+	ID:
+		<div class = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div class = "label">
+	<div style = "position: absolute; top: 220px" >
+	Class:
+		 <select class = "border" style = "left: 75px" id="period4class">
+                  <option value=""></option>
+        {% for item in period_4_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
+	</div>
+
+	<div style = "position: absolute; top: 220px; left: 320px;" id="period4tdiv">
+	Teacher:
+		<div class = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 220px; left: 670px;" id="period4calid">
+	ID:
+		<div class = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div class = "label">
+	<div style = "position: absolute; top: 290px">
+	Class:
+		 <select class = "border" style = "left: 75px" id="period5class">
+                  <option value=""></option>
+        {% for item in period_5_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
+	</div>
+
+	<div style = "position: absolute; top: 290px; left: 320px;" id="period5tdiv">
+	Teacher:
+		<div class = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 290px; left: 670px;" id="period5calid">
+	ID:
+		<div class = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+<div class = "label">
+	<div style = "position: absolute; top: 360px">
+	Class:
+		 <select class = "border" style = "left: 75px" id="period6class">
+         <option value=""></option>
+        {% for item in period_6_cals %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+        </select>
+	</div>
+
+	<div style = "position: absolute; top: 360px; left: 320px;" id="period6tdiv">
+	Teacher:
+		<div class = "border" style = "left: 100px;">
+		</div>
+	</div>
+
+	<div style = "position: absolute; top: 360px; left: 670px;" id="period6calid">
+	ID:
+		<div class = "border" style = "left: 50px;">
+		</div>
+	</div>
+</div>
+
+{% endblock %}

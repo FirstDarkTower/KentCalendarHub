@@ -5,14 +5,14 @@ from collections import OrderedDict
 
 def index(request):
     context = RequestContext(request)
-    context_list = dict(period_1_cals=Calendar.objects.filter(period=1))
+    context_list = dict(period_1_cals=Calendar.objects.filter(period=1, school="US"))
     context_list["period_1_cals"] = remove_duplicates(context_list["period_1_cals"].order_by('class_title'))
-    context_list["period_2_cals"] = remove_duplicates(Calendar.objects.filter(period = 2).order_by('class_title'))
-    context_list["period_3_cals"] = remove_duplicates(Calendar.objects.filter(period = 3).order_by('class_title'))
-    context_list["period_4_cals"] = remove_duplicates(Calendar.objects.filter(period = 4).order_by('class_title'))
-    context_list["period_5_cals"] = remove_duplicates(Calendar.objects.filter(period = 5).order_by('class_title'))
-    context_list["period_6_cals"] = remove_duplicates(Calendar.objects.filter(period = 6).order_by('class_title'))
-    context_list["period_7_cals"] = remove_duplicates(Calendar.objects.filter(period = 7).order_by('class_title'))
+    context_list["period_2_cals"] = remove_duplicates(Calendar.objects.filter(period = 2, school="US").order_by('class_title'))
+    context_list["period_3_cals"] = remove_duplicates(Calendar.objects.filter(period = 3, school="US").order_by('class_title'))
+    context_list["period_4_cals"] = remove_duplicates(Calendar.objects.filter(period = 4, school="US").order_by('class_title'))
+    context_list["period_5_cals"] = remove_duplicates(Calendar.objects.filter(period = 5, school="US").order_by('class_title'))
+    context_list["period_6_cals"] = remove_duplicates(Calendar.objects.filter(period = 6, school="US").order_by('class_title'))
+    context_list["period_7_cals"] = remove_duplicates(Calendar.objects.filter(period = 7, school="US").order_by('class_title'))
     return render_to_response("StudentSite/index.html", context_list, context)
 
 def get_teachers(class_name = "", period = 1):
@@ -62,3 +62,15 @@ def remove_duplicates(list):
             seen.add(value)
 
     return new_list
+
+def ms_page(request):
+    context = RequestContext(request)
+    context_list = dict(period_1_cals=Calendar.objects.filter(period=1, school__in=[7,8]))
+    context_list["period_1_cals"] = remove_duplicates(context_list["period_1_cals"].order_by('class_title'))
+    context_list["period_2_cals"] = remove_duplicates(Calendar.objects.filter(period = 2, school__in=[7, 8]).order_by('class_title'))
+    context_list["period_3_cals"] = remove_duplicates(Calendar.objects.filter(period = 3, school__in=[7, 8]).order_by('class_title'))
+    context_list["period_4_cals"] = remove_duplicates(Calendar.objects.filter(period = 4, school__in=[7, 8]).order_by('class_title'))
+    context_list["period_5_cals"] = remove_duplicates(Calendar.objects.filter(period = 5, school__in=[7, 8]).order_by('class_title'))
+    context_list["period_6_cals"] = remove_duplicates(Calendar.objects.filter(period = 6, school__in=[7, 8]).order_by('class_title'))
+    return render_to_response("StudentSite/ms_page.html", context_list, context)
+
