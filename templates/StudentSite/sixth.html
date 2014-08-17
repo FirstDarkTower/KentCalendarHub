@@ -109,19 +109,19 @@ Calendar ID:
 
     <select class="border" style = "position: absolute; left: -2%; top: 10%;" id="science">
         <option value = ""></option>
-        {% for item in options %}
-            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% for item in science %}
+            <option value = "{{ item.period }}">{{ item.period }}</option>
         {% endfor %}
     </select>
 
 
         <div style = "position: absolute; top: 6.5%; left: 25%; color: black; font-size: 18px;">
        Teacher:
-    </div>
-       <select class="border" style = "position: absolute; left: 21%; top: 10%;" id="science">
+    </div class = "border" id="scienceteacher">
+       <select class="border" style = "position: absolute; left: 21%; top: 10%;" id="scienceteacher">
         <option value = ""></option>
         {% for item in science %}
-            <option value = "{{ item.period }}">{{ item.period }}</option>
+            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
         {% endfor %}
     </select>
 	</div>

@@ -13,7 +13,11 @@ $('document').ready(function() {
                 teacherchanged(source.id);
             }
         } else if (document.title == "Class Calendars - Sixth Grade"){
-            console.log(source.id)
+            if(source.id.indexOf("homeroom") > -1) {
+                sixthhomeroomchanged(source.id);
+            } else if(source.id.indexOf()) {
+
+            }
         }
 
     });;
@@ -40,5 +44,13 @@ function teacherchanged(id) {
     teacher_name = $('#'+id).val();
     $.get('/studentsite/cal_id/', {class_name: class_name, period: period, teacher_name: teacher_name}, function(data) {
        $('#period'+period+'calid').html(data);
+    });
+}
+
+function sixthhomeroomchanged(id) {
+    console.log("here");
+    var teacher_name = $('#homeroom').val();
+    $.get('/studentsite/cal_id/', {class_name: "6th Homeroom", period: 9, teacher_name: teacher_name}, function(data){
+        $('#homeroomcalid').html(data);
     });
 }
