@@ -118,19 +118,15 @@ Calendar ID:
         <div style = "position: absolute; top: 6.5%; left: 25%; color: black; font-size: 18px;">
        Teacher:
     </div class = "border" id="scienceteacher">
-       <select class="border" style = "position: absolute; left: 21%; top: 10%;" id="scienceteacher">
-        <option value = ""></option>
-        {% for item in science %}
-            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
-        {% endfor %}
-    </select>
+       <div class="border" style = "position: absolute; left: 21%; top: 10%;" id="scienceteacher">
+    </div>
 	</div>
 	<div style = "position: absolute; left: 40%; top: 10%; " id="sciencecalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div style = "position: absolute; top: 14.5%; left: -0%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 14.5%; left: 0%; color: black; font-size: 18px;">
        Math:
     </div>
 
@@ -145,12 +141,8 @@ Calendar ID:
        Teacher:
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 21%; top: 18%;" id="math">
-        <option value = ""></option>
-        {% for item in math %}
-            <option value = "{{ item.period }}">{{ item.period }}</option>
-        {% endfor %}
-    </select>
+       <div class="border" style = "position: absolute; left: 21%; top: 18%;" id="math">
+    </div>
 	</div>
 	<div style = "position: absolute; left: 40%; top: 18%; " id="mathcalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
@@ -172,12 +164,8 @@ Calendar ID:
        Teacher:
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 21%; top: 26%;" id="langarts">
-        <option value = ""></option>
-        {% for item in langarts %}
-            <option value = "{{ item.period }}">{{ item.period }}</option>
-        {% endfor %}
-    </select>
+       <div class="border" style = "position: absolute; left: 21%; top: 26%;" id="langarts">
+    </div>
 	</div>
 	<div style = "position: absolute; left: 40%; top: 26%; " id="langartscalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
@@ -199,12 +187,8 @@ Calendar ID:
        Teacher:
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 21%; top: 34%;" id="socstud">
-        <option value = ""></option>
-        {% for item in socstud %}
-            <option value = "{{ item.period }}">{{ item.period }}</option>
-        {% endfor %}
-    </select>
+       <div class="border" style = "position: absolute; left: 21%; top: 34%;" id="socstud">
+    </div>
 	</div>
 	<div style = "position: absolute; left: 40%; top: 34%; " id="socstudcalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
