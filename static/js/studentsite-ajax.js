@@ -5,11 +5,15 @@
 $('document').ready(function() {
     $(document).on("change", ".border", function() {
         var source = $(this)[0];
-        console.log(source.id);
-        if (source.id.indexOf("class") > -1) {
-            classchanged(source.id);
-        } else if(source.id.indexOf("teacher") > -1) {
-            teacherchanged(source.id);
+        console.log(document.title);
+        if (document.title == "Class Calendars - High School" || document.title == "Class Calendars - Middle School") {
+            if (source.id.indexOf("class") > -1) {
+                classchanged(source.id);
+            } else if (source.id.indexOf("teacher") > -1) {
+                teacherchanged(source.id);
+            }
+        } else if (document.title == "Class Calendars - Sixth Grade"){
+            console.log(source.id)
         }
 
     });;

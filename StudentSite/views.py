@@ -88,4 +88,9 @@ def sixth_page(request):
 
     return render_to_response("StudentSite/sixth.html", context_list, context)
 
+def get_sixth_cal_id(period = 1, class_title = "", teacher_name=""):
+    key = ""
+    if period and class_title and teacher_name:
+        key = Calendar.objects.get(period=period, class_title=class_title, teacher_name=teacher_name)
+    return key
 
