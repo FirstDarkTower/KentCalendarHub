@@ -72,42 +72,42 @@ background-color: #990000">
 
 
 
-<div class = "period" style = "left: 71%; top : 40%; font-size: 18px;">
+<div class = "period" style = "left: 71%; top : 42%; font-size: 18px;">
 Calendar ID:
     </div>
 
 
 
 <div class = "label" class="homeroomdiv" style = "top: 38%">
-    <div style = "position: absolute; top: 8%; left: 10%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 5.5%; left: 10%; color: black; font-size: 18px;">
        Teacher:
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 17%; top: 8%;" id="homeroom">
+       <select class="border" style = "position: absolute; left: 6%; top: 10%;" id="homeroom">
         <option value = ""></option>
         {% for item in homeroom %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
         {% endfor %}
     </select>
 	</div>
-	<div style = "position: absolute; left: 40%; top: 8%; " id="homeroomcalid">
+	<div style = "position: absolute; left: 40%; top: 10%; " id="homeroomcalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div class = "period" style = "left: 0%;">
+    <div class = "period" style = "left: -5%;">
         Homeroom
     </div>
 </div>
 
 
 <div class = "label" class="classesdiv" style = "top: 52%">
-    <div style = "position: absolute; top: 8%; left: -6.75%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 6.5%; left: 0%; color: black; font-size: 18px;">
        Science:
     </div>
 	<div>
 
-    <select class="border" style = "position: absolute; left: .5%; top: 8%;" id="science">
+    <select class="border" style = "position: absolute; left: -2%; top: 10%;" id="science">
         <option value = ""></option>
         {% for item in options %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
@@ -115,180 +115,180 @@ Calendar ID:
     </select>
 
 
-        <div style = "position: absolute; top: 8%; left: 18%; color: black; font-size: 18px;">
+        <div style = "position: absolute; top: 6.5%; left: 25%; color: black; font-size: 18px;">
        Teacher:
     </div>
-       <select class="border" style = "position: absolute; left: 25%; top: 8%;" id="science">
+       <select class="border" style = "position: absolute; left: 21%; top: 10%;" id="science">
         <option value = ""></option>
         {% for item in science %}
             <option value = "{{ item.period }}">{{ item.period }}</option>
         {% endfor %}
     </select>
 	</div>
-	<div style = "position: absolute; left: 40%; top: 8%; " id="sciencecalid">
+	<div style = "position: absolute; left: 40%; top: 10%; " id="sciencecalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div style = "position: absolute; top: 16%; left: -4.5%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 14.5%; left: -0%; color: black; font-size: 18px;">
        Math:
     </div>
 
-    <select class="border" style = "position: absolute; left: .5%; top: 16%;" id="science">
+    <select class="border" style = "position: absolute; left: -2%; top: 18%;" id="science">
         <option value = ""></option>
         {% for item in options %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
         {% endfor %}
     </select>
 
-    <div style = "position: absolute; top: 16%; left: 18%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 14.5%; left: 25%; color: black; font-size: 18px;">
        Teacher:
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 25%; top: 16%;" id="math">
+       <select class="border" style = "position: absolute; left: 21%; top: 18%;" id="math">
         <option value = ""></option>
         {% for item in math %}
             <option value = "{{ item.period }}">{{ item.period }}</option>
         {% endfor %}
     </select>
 	</div>
-	<div style = "position: absolute; left: 40%; top: 16%; " id="mathcalid">
+	<div style = "position: absolute; left: 40%; top: 18%; " id="mathcalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div style = "position: absolute; top: 24%; left: -11.25%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 22%; left: -0%; color: black; font-size: 18px;">
        Language Arts:
     </div>
 
-    <select class="border" style = "position: absolute; left: .5%; top: 24%;" id="science">
+    <select class="border" style = "position: absolute; left: -2%; top: 26%;" id="science">
         <option value = ""></option>
         {% for item in options %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
         {% endfor %}
     </select>
 
-    <div style = "position: absolute; top: 24%; left: 18%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 22%; left: 25%; color: black; font-size: 18px;">
        Teacher:
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 25%; top: 24%;" id="langarts">
+       <select class="border" style = "position: absolute; left: 21%; top: 26%;" id="langarts">
         <option value = ""></option>
         {% for item in langarts %}
             <option value = "{{ item.period }}">{{ item.period }}</option>
         {% endfor %}
     </select>
 	</div>
-	<div style = "position: absolute; left: 40%; top: 24%; " id="langartscalid">
+	<div style = "position: absolute; left: 40%; top: 26%; " id="langartscalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div style = "position: absolute; top: 32%; left: -11%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 30%; left: -0%; color: black; font-size: 18px;">
        Social Studies:
     </div>
 
-    <select class="border" style = "position: absolute; left: .5%; top: 32%;" id="science">
+    <select class="border" style = "position: absolute; left: -2%; top: 34%;" id="science">
         <option value = ""></option>
         {% for item in options %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
         {% endfor %}
     </select>
 
-    <div style = "position: absolute; top: 32%; left: 18%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 30%; left: 25%; color: black; font-size: 18px;">
        Teacher:
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 25%; top: 32%;" id="socstud">
+       <select class="border" style = "position: absolute; left: 21%; top: 34%;" id="socstud">
         <option value = ""></option>
         {% for item in socstud %}
             <option value = "{{ item.period }}">{{ item.period }}</option>
         {% endfor %}
     </select>
 	</div>
-	<div style = "position: absolute; left: 40%; top: 32%; " id="socstudcalid">
+	<div style = "position: absolute; left: 40%; top: 34%; " id="socstudcalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div class = "period" style = "left: 0%;">
+    <div class = "period" style = "left: -5%;">
         Classes
     </div>
 </div>
 
 
 <div class = "label" class="rotationdiv" style = "top: 91%">
-    <div style = "position: absolute; top: 8%; left: 6%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 6%; left: 8.5%; color: black; font-size: 18px;">
        Number (1 - 4):
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 17%; top: 8%;" id="rotation">
+       <select class="border" style = "position: absolute; left: 6%; top: 10%;" id="rotation">
         <option value = ""></option>
         {% for item in options %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
         {% endfor %}
     </select>
 	</div>
-	<div style = "position: absolute; left: 40%; top: 8%; " id="rotationcalid">
+	<div style = "position: absolute; left: 40%; top: 10%; " id="rotationcalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div class = "period" style = "left: 0%;">
+    <div class = "period" style = "left: -5%;">
         Rotation
     </div>
 </div>
 
 <div class = "label" class="electivesdiv" style = "top: 106%">
-<div style = "position: absolute; top: 8%; left: 8.75%; color: black; font-size: 18px;">
+<div style = "position: absolute; top: 6%; left: 8.5%; color: black; font-size: 18px;">
        Year Long:
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 17%; top: 8%;" id="electivesyear">
+       <select class="border" style = "position: absolute; left: 6%; top: 10%;" id="electivesyear">
         <option value = ""></option>
         {% for item in options %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
         {% endfor %}
     </select>
 	</div>
-	<div style = "position: absolute; left: 40%; top: 8%; " id="electivesyearcalid">
+	<div style = "position: absolute; left: 40%; top: 10%; " id="electivesyearcalid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div style = "position: absolute; top: 16%; left: 8%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 14.5%; left: 8.5%; color: black; font-size: 18px;">
        Semester 1:
     </div>
 	<div>
-       <select class="border" style = "position: absolute; left: 17%; top: 16%;" id="electivesS1">
+       <select class="border" style = "position: absolute; left: 6%; top: 18%;" id="electivesS1">
         <option value = ""></option>
         {% for item in options %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
         {% endfor %}
     </select>
 	</div>
-	<div style = "position: absolute; left: 40%; top: 16%; " id="electivesS1calid">
+	<div style = "position: absolute; left: 40%; top: 18%; " id="electivesS1calid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div style = "position: absolute; top: 24%; left: 8%; color: black; font-size: 18px;">
+    <div style = "position: absolute; top: 22.5%; left: 8.5%; color: black; font-size: 18px;">
        Semester 2:
     </div>
 <div>
-       <select class="border" style = "position: absolute; left: 17%; top: 24%;" id="electivesS2">
+       <select class="border" style = "position: absolute; left: 6%; top: 26%;" id="electivesS2">
         <option value = ""></option>
         {% for item in options %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
         {% endfor %}
     </select>
 	</div>
-	<div style = "position: absolute; left: 40%; top: 24%; " id="electivesS2calid">
+	<div style = "position: absolute; left: 40%; top: 26%; " id="electivesS2calid">
 		<div class = "border" style = "left: 50px; width: 500px;">
 		</div>
 	</div>
 
-    <div class = "period" style = "left: 0%;">
+    <div class = "period" style = "left: -5%;">
         Electives
     </div>
 </div>
