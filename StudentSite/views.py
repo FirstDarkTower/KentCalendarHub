@@ -47,6 +47,8 @@ def get_cal_key(class_name ="", period= 1, teacher_name = ""):
         key = Calendar.objects.filter(class_title = class_name, period = period, teacher_name = teacher_name)[0].cal_id
     elif class_name and period == "8":
         key = Calendar.objects.filter(class_title = class_name, period = period)[0].cal_id
+    elif class_name and period == "10":
+        key = Calendar.objects.filter(class_title = class_name, period = period)[0].cal_id
     return key
 
 def get_cal_id(request):
@@ -130,5 +132,5 @@ def sixth_rotations(request):
 
 def other_calendars(request):
     context = RequestContext(request)
-
-    return render_to_response('StudentSite/other_calendars.html', context)
+    context_list = dict(other_cals=Calendar.objects.filter(school='other'));
+    return render_to_response('StudentSite/other_calendars.html', context_list, context)

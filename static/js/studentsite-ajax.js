@@ -5,7 +5,6 @@
 $('document').ready(function() {
     $(document).on("change", ".border", function() {
         var source = $(this)[0];
-        console.log(document.title);
         if (document.title == "Class Calendars - High School" || document.title == "Class Calendars - Middle School") {
             if (source.id.indexOf("class") > -1) {
                 classchanged(source.id);
@@ -23,6 +22,10 @@ $('document').ready(function() {
                 sixthteacherchanged(source.id);
             } else if(source.id.indexOf("rotation") > -1){
                 rotationchanged(source.id)
+            }
+        } else if (document.title == "Class Calendars - Other Calendars") {
+            if(source.id.indexOf('other') > -1){
+                otherchanged(source.id);
             }
         }
 
@@ -112,7 +115,6 @@ function rotationchanged(id) {
 }
 
 function sixthhomeroomchanged(id) {
-    console.log("here");
     var teacher_name = $('#homeroom').val();
     $.get('/studentsite/cal_id/', {class_name: "6th Homeroom", period: 9, teacher_name: teacher_name}, function(data){
         $('#homeroomcalid').html(data);
@@ -124,5 +126,13 @@ function sixthelectivechanged(id) {
     var class_title = $('#'+id).val();
     $.get('/studentsite/cal_id/', {class_name: class_title, period: period, teacher_name: ""}, function(data){
         $('#'+id+'calid').html(data);
+    });
+}
+
+function otherchanged(id) {
+    var period = 10;
+    var class_title = $('#'+id).val();
+    $.get('/studentsite/cal_id/', {class_name: class_title, period: period, teacher_name: ""}, function(data){
+        $('#othercalid').html(data);
     });
 }

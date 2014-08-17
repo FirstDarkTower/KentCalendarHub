@@ -52,3 +52,5 @@ print Calendar.objects.filter(school="ELEC")
 class_name = "6th Science"
 
 print class_name.split("6th ")[1].lower()
+
+print Calendar.objects.filter(period=10, class_title="KDS Letter Days")
