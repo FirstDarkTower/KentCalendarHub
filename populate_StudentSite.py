@@ -16,7 +16,7 @@ def populate():
    file.readlines(1)
    for line in file:
         lineArray = line.split('\t')
-        makeCalendar(lineArray[0], lineArray[2], lineArray[3].strip('"'), lineArray[7], lineArray[1], lineArray[9])
+        makeCalendar(lineArray[0], lineArray[2], lineArray[3].strip('"'), lineArray[7], lineArray[1], lineArray[11])
 
 if __name__ == "__main__":
     print "Populating Student Site.........."

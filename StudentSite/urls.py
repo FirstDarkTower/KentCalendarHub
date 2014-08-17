@@ -9,4 +9,5 @@ urlpatterns = patterns('',
                        url(r"^cal_id/$", views.get_cal_id, name='cal_key'),
                        url(r"^ms_page/$", views.ms_page, name='ms_page'),
                        url(r"^sixth_page/$", views.sixth_page, name="sixth_page"),
+                       url(r"^sixth_rotations/$", views.sixth_rotations, name='sixth_rotations'),
 )

@@ -30,12 +30,23 @@ def teacher_list(request):
         class_name = request.GET.get('class_name')
         period = request.GET.get('period')
     options = get_teachers(class_name, period)
-    return render_to_response('StudentSite/option_list.html', {'options': options, 'field_title' : "Teacher:", 'period': period}, context)
+    id = "period"+period+"teacher"
+    if class_name.find("6th") > -1:
+        sixth_class = class_name.split("6th ")[1].lower();
+        if sixth_class == "science" or sixth_class == 'math':
+            id = sixth_class +"teacher"
+        elif sixth_class == 'language arts':
+            id = 'langartsteacher'
+        else:
+            id = 'socstudteacher'
+    return render_to_response('StudentSite/option_list.html', {'options': options, 'field_title' : "Teacher:", 'id': id}, context)
 
 def get_cal_key(class_name ="", period= 1, teacher_name = ""):
     key = ""
     if class_name and period and teacher_name:
         key = Calendar.objects.filter(class_title = class_name, period = period, teacher_name = teacher_name)[0].cal_id
+    elif class_name and period == "8":
+        key = Calendar.objects.filter(class_title = class_name, period = period)[0].cal_id
     return key
 
 def get_cal_id(request):
@@ -49,7 +60,6 @@ def get_cal_id(request):
         teacher_name = request.GET.get('teacher_name')
 
     key = get_cal_key(class_name, period, teacher_name)
-    print "here"
     return render_to_response('StudentSite/single_box.html', {'key': key, 'field_title' : "ID:"}, context)
 
 def remove_duplicates(list):
@@ -88,11 +98,6 @@ def sixth_page(request):
 
     return render_to_response("StudentSite/sixth.html", context_list, context)
 
-def get_sixth_cal_id(period = 1, class_title = "", teacher_name=""):
-    key = ""
-    if period and class_title and teacher_name:
-        key = Calendar.objects.get(period=period, class_title=class_title, teacher_name=teacher_name)
-    return key
 
 def remove_period_duplicates(list):
     new_list = []
@@ -104,3 +109,20 @@ def remove_period_duplicates(list):
             seen.add(value)
 
     return new_list
+
+
+def get_sixth_rotations(rotation_number):
+    options = []
+    if rotation_number:
+        options = Calendar.objects.filter(school = 6, class_title__in=["6th Latin Language Arts", "6th Physical Education", "6th Writing Skills", "6th Arts Rotation", "6th Latin"], period=rotation_number)
+    return options
+
+def sixth_rotations(request):
+    context = RequestContext(request)
+    options = []
+    rotation = 1
+    if request.method == "GET":
+        rotation = request.GET.get('rotation')
+    options = get_sixth_rotations(rotation)
+
+    return render_to_response('StudentSite/sixth_rotations.html', {'options': options}, context)

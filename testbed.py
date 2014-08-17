@@ -48,3 +48,7 @@ print_list(Calendar.objects.filter(school=6))
 print Calendar.objects.filter(school = 6, class_title__in=["6th Latin Language Arts", "6th Physical Education", "6th Writing Skills", "6th Arts Rotation", "6th Latin"], period=1)
 
 print Calendar.objects.filter(school="ELEC")
+
+class_name = "6th Science"
+
+print class_name.split("6th ")[1].lower()

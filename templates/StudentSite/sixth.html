@@ -107,7 +107,7 @@ Calendar ID:
     </div>
 	<div>
 
-    <select class="border" style = "position: absolute; left: -2%; top: 10%;" id="science">
+    <select class="border" style = "position: absolute; left: -2%; top: 10%;" id="scienceclass">
         <option value = ""></option>
         {% for item in science %}
             <option value = "{{ item.period }}">{{ item.period }}</option>
@@ -118,7 +118,7 @@ Calendar ID:
         <div style = "position: absolute; top: 6.5%; left: 25%; color: black; font-size: 18px;">
        Teacher:
     </div class = "border" id="scienceteacher">
-       <div class="border" style = "position: absolute; left: 21%; top: 10%;" id="scienceteacher">
+       <div class="border" style = "position: absolute; left: 21%; top: 10%;" id="sciencetdiv">
     </div>
 	</div>
 	<div style = "position: absolute; left: 40%; top: 10%; " id="sciencecalid">
@@ -130,10 +130,10 @@ Calendar ID:
        Math:
     </div>
 
-    <select class="border" style = "position: absolute; left: -2%; top: 18%;" id="science">
+    <select class="border" style = "position: absolute; left: -2%; top: 18%;" id="mathclass">
         <option value = ""></option>
-        {% for item in options %}
-            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% for item in math %}
+            <option value = "{{ item.period }}">{{ item.period }}</option>
         {% endfor %}
     </select>
 
@@ -141,7 +141,7 @@ Calendar ID:
        Teacher:
     </div>
 	<div>
-       <div class="border" style = "position: absolute; left: 21%; top: 18%;" id="math">
+       <div class="border" style = "position: absolute; left: 21%; top: 18%;" id="mathtdiv">
     </div>
 	</div>
 	<div style = "position: absolute; left: 40%; top: 18%; " id="mathcalid">
@@ -153,10 +153,10 @@ Calendar ID:
        Language Arts:
     </div>
 
-    <select class="border" style = "position: absolute; left: -2%; top: 26%;" id="science">
+    <select class="border" style = "position: absolute; left: -2%; top: 26%;" id="langartsclass">
         <option value = ""></option>
-        {% for item in options %}
-            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% for item in langarts %}
+            <option value = "{{ item.period }}">{{ item.period }}</option>
         {% endfor %}
     </select>
 
@@ -164,7 +164,7 @@ Calendar ID:
        Teacher:
     </div>
 	<div>
-       <div class="border" style = "position: absolute; left: 21%; top: 26%;" id="langarts">
+       <div class="border" style = "position: absolute; left: 21%; top: 26%;" id="langartstdiv">
     </div>
 	</div>
 	<div style = "position: absolute; left: 40%; top: 26%; " id="langartscalid">
@@ -176,10 +176,10 @@ Calendar ID:
        Social Studies:
     </div>
 
-    <select class="border" style = "position: absolute; left: -2%; top: 34%;" id="science">
+    <select class="border" style = "position: absolute; left: -2%; top: 34%;" id="socstudclass">
         <option value = ""></option>
-        {% for item in options %}
-            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% for item in socstud %}
+            <option value = "{{ item.period }}">{{ item.period }}</option>
         {% endfor %}
     </select>
 
@@ -187,7 +187,7 @@ Calendar ID:
        Teacher:
     </div>
 	<div>
-       <div class="border" style = "position: absolute; left: 21%; top: 34%;" id="socstud">
+       <div class="border" style = "position: absolute; left: 21%; top: 34%;" id="socstudtdiv">
     </div>
 	</div>
 	<div style = "position: absolute; left: 40%; top: 34%; " id="socstudcalid">
@@ -208,8 +208,8 @@ Calendar ID:
 	<div>
        <select class="border" style = "position: absolute; left: 6%; top: 10%;" id="rotation">
         <option value = ""></option>
-        {% for item in options %}
-            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% for item in rotation %}
+            <option value = "{{ item }}">{{ item }}</option>
         {% endfor %}
     </select>
 	</div>
@@ -230,8 +230,8 @@ Calendar ID:
 	<div>
        <select class="border" style = "position: absolute; left: 6%; top: 10%;" id="electivesyear">
         <option value = ""></option>
-        {% for item in options %}
-            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% for item in electivesyear %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
     </select>
 	</div>
@@ -246,8 +246,8 @@ Calendar ID:
 	<div>
        <select class="border" style = "position: absolute; left: 6%; top: 18%;" id="electivesS1">
         <option value = ""></option>
-        {% for item in options %}
-            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% for item in electivesS1 %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
     </select>
 	</div>
@@ -262,8 +262,8 @@ Calendar ID:
 <div>
        <select class="border" style = "position: absolute; left: 6%; top: 26%;" id="electivesS2">
         <option value = ""></option>
-        {% for item in options %}
-            <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
+        {% for item in electivesS2 %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
         {% endfor %}
     </select>
 	</div>

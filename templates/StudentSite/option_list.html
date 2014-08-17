@@ -1,6 +1,6 @@
 {% if options %}
 {{ field_title }}
-    <select class="border" style = "position: absolute; left: 0%" id="period{{ period }}teacher">
+    <select class="border" style = "position: absolute; left: 0%" id="{{ id }}">
         <option value = ""></option>
         {% for item in options %}
             <option value = "{{ item.teacher_name }}">{{ item.teacher_name }}</option>
