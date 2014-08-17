@@ -126,3 +126,9 @@ def sixth_rotations(request):
     options = get_sixth_rotations(rotation)
 
     return render_to_response('StudentSite/sixth_rotations.html', {'options': options}, context)
+
+
+def other_calendars(request):
+    context = RequestContext(request)
+
+    return render_to_response('StudentSite/other_calendars.html', context)
