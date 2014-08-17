@@ -39,6 +39,8 @@ from StudentSite import views
 # print '__________________________________________'
 # print_list(remove_duplicates(temp_list))
 
+print Calendar.objects.all()
+
 print Calendar.objects.filter(period = 6, school__in=[7,8])
 
 print_list(Calendar.objects.filter(school=6))
