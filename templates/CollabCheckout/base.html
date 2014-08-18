@@ -1,0 +1,16 @@
+{{ load static }}
+<html lang="en">
+<meta charset="utf-8">
+<head>
+
+</head>
+   <div id="sidebar"></div>
+   <img src={{ static }}/mtnBackground.png" width="100%">
+   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
+    <title>{% block title_block %}{% endblock %} </title>
+</head>
+<body>
+{% block body_block %}{% endblock %}
+
+</body>
+</html>
