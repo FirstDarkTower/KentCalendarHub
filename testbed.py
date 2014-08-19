@@ -19,9 +19,18 @@ def print_list(list):
     for e in list:
         print e
 
+def format_time(time):
+    if len(time) > 3:
+        mins = time[2:4]
+        hours = time[:2]
+    else:
+        mins = time[1:3]
+        hours = "0"+time[0:1]
+    return hours +":"+mins
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KentCalendarHub.settings")
 from StudentSite.models import Calendar
+from CollabCheckout.models import RoomSlots
 from StudentSite import views
 
 # temp = Calendar.objects.filter(period = 2, class_title__istartswith="AP")
@@ -39,18 +48,22 @@ from StudentSite import views
 # print '__________________________________________'
 # print_list(remove_duplicates(temp_list))
 
-print Calendar.objects.all()
+# print Calendar.objects.all()
+#
+# print Calendar.objects.filter(period = 6, school__in=[7,8])
+#
+# print_list(Calendar.objects.filter(school=6))
+#
+# print Calendar.objects.filter(school = 6, class_title__in=["6th Latin Language Arts", "6th Physical Education", "6th Writing Skills", "6th Arts Rotation", "6th Latin"], period=1)
+#
+# print Calendar.objects.filter(school="ELEC")
+#
+# class_name = "6th Science"
+#
+# print class_name.split("6th ")[1].lower()
+#
+# print Calendar.objects.filter(period=10, class_title="KDS Letter Days")
 
-print Calendar.objects.filter(period = 6, school__in=[7,8])
 
-print_list(Calendar.objects.filter(school=6))
+print_list(RoomSlots.objects.all())
 
-print Calendar.objects.filter(school = 6, class_title__in=["6th Latin Language Arts", "6th Physical Education", "6th Writing Skills", "6th Arts Rotation", "6th Latin"], period=1)
-
-print Calendar.objects.filter(school="ELEC")
-
-class_name = "6th Science"
-
-print class_name.split("6th ")[1].lower()
-
-print Calendar.objects.filter(period=10, class_title="KDS Letter Days")

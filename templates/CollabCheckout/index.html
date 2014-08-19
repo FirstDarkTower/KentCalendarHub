@@ -9,7 +9,7 @@
   <form id="myForm" align="right">
   <p>Email: <input type="text" name="email">@kentdenver.org</p>
   <p id="DateName">Date: <input type="text" value="" id="datepicker" name="date"/></p>
-  <p id= "PeriodsName">Period: <select name ="Periods" id="Periods" onchange="google.script.run.withSuccessHandler(updateRoomList).withUserObject(this.parentNode.parentNode).getRooms(this.parentNode.parentNode);">
+  <p id= "PeriodsName">Period: <select name ="Periods" id="Periods" >
    <option selected="true" value="empty" selected>None Selected</option>
    <option value="0" selected>--</option> 
    <option value="1" selected>--</option>  
@@ -24,7 +24,7 @@
    <option value="10" selected>--</option>
    <option value="11" selected>--</option>
    </select></p>
-  <p id= "RoomsName">Room: <select name ="Rooms" id="Rooms" onchange="revealCheckout()">
+  <p id= "RoomsName">Room: <select name ="Rooms" id="Rooms">
   <option selected="true" value="empty" selected>None Selected</option> 
    <option value="1" selected>--</option>  
    <option value="2" selected>--</option>  
@@ -39,7 +39,7 @@
    <option value="11" selected>--</option>
    -->
    </select></p>
-  <input id ="CheckoutButton" type='button' value="Checkout" name="checkout" onclick="checkoutClicked()">
+  <input id ="CheckoutButton" type='button' value="Checkout" name="checkout">
    </form>
    </div>
 {% endblock %}

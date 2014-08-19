@@ -14,4 +14,4 @@ class RoomSlots(models.Model):
     reserved = models.BooleanField()
 
     def __unicode__(self):
-        return self.period + " "+ self.date + " " + self.room + " " +self.reserved
+        return str(self.period) + " "+ str(self.date) + " " + str(self.room) + " " + str(self.reserved)

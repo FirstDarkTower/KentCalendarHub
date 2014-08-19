@@ -1,16 +1,17 @@
-{{ load static }}
+{% load static %}
 <html lang="en">
 <meta charset="utf-8">
 <head>
 
 </head>
    <div id="sidebar"></div>
-   <img src={{ static }}/mtnBackground.png" width="100%">
+   <img src={%  static 'mtnBackground.png' %} width="100%">
    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'css/collabstyle.css' %}" rel="stylesheet">
     <title>{% block title_block %}{% endblock %} </title>
 </head>
 <body>
 {% block body_block %}{% endblock %}
-
+<script src="{% static 'js/collab-scripts.js' %}"></script>
 </body>
 </html>
