@@ -4,7 +4,7 @@ from django.db import models
 
 
 
-class RoomSlots(models.Model):
+class RoomSlot(models.Model):
     period = models.IntegerField()
     checkout_email = models.EmailField()
     start_time = models.TimeField()
@@ -12,6 +12,7 @@ class RoomSlots(models.Model):
     date = models.DateField()
     room = models.CharField(max_length=256)
     reserved = models.BooleanField()
+    day_type = models.CharField(max_length=256)
 
     def __unicode__(self):
-        return str(self.period) + " "+ str(self.date) + " " + str(self.room) + " " + str(self.reserved)
+        return str(self.period) + " "+ str(self.date) + " " + str(self.room) + " " + str(self.reserved) + ' ' + str(self.day_type)

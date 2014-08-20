@@ -13,10 +13,10 @@ def populate():
    from django.conf import settings
    fileName = os.path.join(os.path.join(settings.BASE_DIR, 'static'), 'CompletedCourses.tsv')
    file = open(fileName)
-   file.readlines(1)
    for line in file:
-        lineArray = line.split('\t')
-        makeCalendar(lineArray[0], lineArray[2], lineArray[3].strip('"'), lineArray[7], lineArray[1], lineArray[11])
+       lineArray = line.split('\t')
+       if not lineArray[0]== "Period":
+            makeCalendar(lineArray[0], lineArray[2], lineArray[3].strip('"'), lineArray[7], lineArray[1], lineArray[11])
 
 if __name__ == "__main__":
     print "Populating Student Site.........."

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from CollabCheckout.models import RoomSlots
+from CollabCheckout.models import RoomSlot
 
-admin.site.register(RoomSlots)
+admin.site.register(RoomSlot)

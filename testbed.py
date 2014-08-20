@@ -1,5 +1,6 @@
 import os
 from collections import OrderedDict
+from datetime import date
 
 __author__ = 'Alex Clement'
 
@@ -30,7 +31,7 @@ def format_time(time):
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KentCalendarHub.settings")
 from StudentSite.models import Calendar
-from CollabCheckout.models import RoomSlots
+from CollabCheckout.models import RoomSlot
 from StudentSite import views
 
 # temp = Calendar.objects.filter(period = 2, class_title__istartswith="AP")
@@ -65,5 +66,27 @@ from StudentSite import views
 # print Calendar.objects.filter(period=10, class_title="KDS Letter Days")
 
 
-print_list(RoomSlots.objects.all())
+print_list(RoomSlot.objects.all())
 
+periods=RoomSlot.objects.values_list('period').distinct()
+new_periods = []
+for period in periods:
+    if period[0] == 0:
+        temp = (0, "Before school")
+    elif period[0] == 8:
+        temp = (8, "After school: 3:30-4:30")
+    elif period[0] == 9:
+        temp = (9, "After school: 4:30-5:30")
+    elif period[0] == 10:
+        temp = (10, "First Half of Lunch")
+    elif period[0] == 11:
+        temp = (11, "Second Half og Lunch")
+    else:
+        temp = (period[0], period[0])
+    new_periods.append(temp)
+
+print new_periods
+
+print_list(Calendar.objects.filter(period=1))
+
+dateText = "8/20/2014"
