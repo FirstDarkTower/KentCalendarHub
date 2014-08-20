@@ -10,7 +10,10 @@ $('document').ready(function() {
                 $('#Periods').html(data);
                 $('#PeriodsName').show();
             });
-        }, minDate: 0, maxDate
+        }, beforeShowDay: $.datepicker.noWeekends, minDate: 0, maxDate
         : +14 });
+    $('#Periods').change(function() {
+       console.log($('#Periods').val());
+    });
 });
 

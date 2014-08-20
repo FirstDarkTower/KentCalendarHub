@@ -13,38 +13,36 @@ def index(request):
     return render_to_response('CollabCheckout/index.html', context);
 
 def get_periods(dateText = ""):
-    periods = []
+    periods = [dict(number="None", text="None")]
     date_array = str(dateText).split("/")
     d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
     day_type = RoomSlot.objects.filter(date=d)[0].day_type
-    print day_type
-    period_0 = dict(number=1, text="Period 1")
+    period_0 = dict(number=0, text="Before school")
     period_1 = dict(number=1, text="Period 1")
-    period_2 = dict(number=1, text="Period 1")
-    period_3 = dict(number=1, text="Period 1")
-    period_4 = dict(number=1, text="Period 1")
-    period_5 = dict(number=1, text="Period 1")
-    period_6 = dict(number=1, text="Period 1")
-    period_7 = dict(number=1, text="Period 1")
-    period_8 = dict(number=1, text="Period 1")
-    period_9 = dict(number=1, text="Period 1")
-    period_10 = dict(number=1, text="Period 1")
-    period_11 = dict(number=1, text="Period 1")
+    period_2 = dict(number=1, text="Period 2")
+    period_3 = dict(number=1, text="Period 3")
+    period_4 = dict(number=1, text="Period 4")
+    period_5 = dict(number=1, text="Period 5")
+    period_6 = dict(number=1, text="Period 6")
+    period_7 = dict(number=1, text="Period 7")
+    period_8 = dict(number=1, text="After school: 3:30-4:30")
+    period_9 = dict(number=1, text="After school: 4:30-5:30")
+    period_10 = dict(number=1, text="First half of lunch")
+    period_11 = dict(number=1, text="Second half of lunch")
     if day_type == "A":
-        periods = [1, 3, 4, 6, 7]
+        periods = [period_0, period_1, period_3, period_4, period_6, period_7, period_8, period_9, period_10, period_11]
     elif day_type == "B":
-        periods = [2, 4, 5, 7, 1]
+        periods = [period_0, period_1, period_2, period_4, period_5, period_7, period_8, period_9, period_10, period_11]
     elif day_type == "C":
-        periods = [3, 5, 6, 1, 2]
+        periods = [period_0, period_1, period_2, period_3, period_5, period_6, period_8, period_9, period_10, period_11]
     elif day_type == "D":
-        periods = [4, 6, 7, 2, 3]
+        periods = [period_0, period_2, period_3, period_4, period_6, period_7, period_8, period_9, period_10, period_11]
     elif day_type == "E":
-        periods = [5, 7, 1, 3, 4]
+        periods = [period_0, period_1, period_3, period_4, period_5, period_7, period_8, period_9, period_10, period_11]
     elif day_type == "F":
-        periods = [6, 1, 2, 4, 5]
+        periods = [period_0, period_1, period_2, period_4, period_5, period_6, period_8, period_9, period_10, period_11]
     elif day_type == "G":
-        periods = [7, 2, 3, 5, 6]
-    periods.sort()
+        periods = [period_0, period_2, period_3, period_5, period_6, period_7, period_8, period_9, period_10, period_11]
     return periods
 
 def period_list(request):
@@ -52,7 +50,6 @@ def period_list(request):
     if request.method == "GET":
         dateText = request.GET.get('dateText')
     periods = get_periods(dateText)
-    print periods
     context_list = dict(periods = periods)
     return render_to_response('CollabCheckout/period_list.html', context_list, context)
 
@@ -79,3 +76,21 @@ def checkout(request):
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
     return render_to_response('CollabCheckout/checkout.html', {'form': form}, context)
+
+def get_room_list(period, dateText):
+    rooms = []
+    date_array = str(dateText).split("/")
+    d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
+    rooms = RoomSlot.objects.filter(period=period, date=d, reserved=False)
+
+    return rooms;
+
+
+def room_list(request):
+    context = RequestContext(request)
+    if request.method == "GET":
+        dateText = request.GET.get('dateText')
+        period = request.GET.get('period')
+    periods = get_room_list(period, dateText)
+    context_list = dict(periods = periods)
+    return render_to_response('CollabCheckout/period_list.html', context_list, context)

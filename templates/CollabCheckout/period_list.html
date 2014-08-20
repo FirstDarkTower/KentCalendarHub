@@ -1,5 +1,6 @@
 {% if periods %}
+    <option></option>
     {% for p in periods %}
-        <option value="{{ p }}">{{ p }}</option>
+        <option value="{{ p.number }}">{{ p.text }}</option>
     {%  endfor %}
 {% endif %}

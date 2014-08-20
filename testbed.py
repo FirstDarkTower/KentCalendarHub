@@ -90,3 +90,11 @@ print new_periods
 print_list(Calendar.objects.filter(period=1))
 
 dateText = "8/20/2014"
+period = 1
+
+rooms = []
+date_array = str(dateText).split("/")
+d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
+rooms = RoomSlot.objects.filter(period=period, date=d, reserved=False)
+
+print rooms;
