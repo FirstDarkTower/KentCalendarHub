@@ -2,23 +2,23 @@
 {% load static %}
 {% block body_block %}
 <h1>Welcome to the Collaboration Studio Checkout Hub</h1>
-   <p>To check out a room, fill out the form below and then accept the calendar invite. Unavailable times and rooms are indicated by <strong>--</strong>. <br>
-   If you decline the invite you are sent or take more than 24 hours to respond, the room will be freed for others to use. <br>
-    If you accept an invite and realize that you not longer need the room, send an email to <a href="mailto:iitsupport@kentdenver.org">iitsupport@kentdenver.org</a>.</p>
+   <p>To check out a room, fill out the form below. If you have any questions, please contact <a href="mailto:iitsupport@kentdenver.org">iitsupport@kentdenver.org</a>.</p>
+    <br>
    <div id="wrap">
            <form id="myForm" method="post" action="/CollabCheckout/checkout/">
 
             {% csrf_token %}
 
-            <p><input type="text" name="email" placeholder="Email address"></p>
-            <p id="DateName"><input type="text" value="" id="datepicker" name="date" placeholder="Date"/></p>
-            <p id= "PeriodsName">Period:&nbsp;&nbsp;<select name ="period" id="Periods" >
+            <p><input type="text" name="email" id='email' placeholder="Email address" required="true"></p>
+            <p id="DateName"><input type="text" value="" id="datepicker" name="date" placeholder="Date" required="true"/></p>
+            <p id= "PeriodsName">Period:&nbsp;&nbsp;<select name ="period" id="Periods" required="true">
             <option selected="true" value="empty" selected>None Selected</option>
             </select></p>
 
-            <p id= "RoomsName">Room:&nbsp;&nbsp;<select name ="room" id="Rooms">
+            <p id= "RoomsName">Room:&nbsp;&nbsp;<select name ="room" id="Rooms" required="true">
             <option selected="true" value="empty" selected>None Selected</option>
             </select></p>
+            <br>
             <input type="submit" name="submit" value="Submit" />
         </form>
    </div>

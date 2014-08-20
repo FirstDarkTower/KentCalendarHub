@@ -13,7 +13,15 @@ $('document').ready(function() {
         }, beforeShowDay: $.datepicker.noWeekends, minDate: 0, maxDate
         : +14 });
     $('#Periods').change(function() {
-       console.log($('#Periods').val());
+        var period = $('#Periods').val();
+        var dateText = $('#datepicker').val();
+        var email = $('#email').val();
+        console.log("Period: " + period + "  Date: " + dateText + "  Email: " + email)
+        $.get('/collabcheckout/room_list', {dateText: dateText, period:period, email:email}, function(data) {
+            $('#Rooms').html(data);
+            $('#RoomsName').show();
+        });
+
     });
 });
 
