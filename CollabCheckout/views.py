@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime, timedelta
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
@@ -15,8 +15,11 @@ def index(request):
 
 def get_periods(dateText = ""):
     periods = [dict(number="None", text="None")]
-    date_array = str(dateText).split("/")
-    d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
+    if str(dateText).find("-") > -1:
+        d = dateText
+    else:
+        date_array = str(dateText).split("/")
+        d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
     day_type = RoomSlot.objects.filter(date=d)[0].day_type
     period_0 = dict(number=0, text="Before school")
     period_1 = dict(number=1, text="Period 1")
@@ -110,6 +113,8 @@ def get_room_list(period, dateText, email):
             new_rooms.append(temp)
         elif number ==  2:
             roomString = "Collaboration Studio 2"
+            temp = dict(number=number, text=roomString)
+            new_rooms.append(temp)
         elif number == 3:
             roomString = "Collaboration Studio 3"
             temp = dict(number=number, text=roomString)
@@ -160,3 +165,65 @@ def room_list(request):
     context_list = dict(options = rooms)
     return render_to_response('CollabCheckout/option_list.html', context_list, context)
 
+
+def active_rooms(request):
+    context = RequestContext(request)
+    date_source = datetime.now()
+    time = date_source.time()
+    end_time = date_source - timedelta(minutes=5)
+    d = date_source.date
+    try:
+        current_period = RoomSlot.objects.filter(start_time__lte = time, end_time__gte = end_time, date = d)[0]
+    except IndexError:
+        return render_to_response('CollabCheckout/current_usage.html', {'current_period':"None", 'next_period':"None", 'list' : []}, context)
+    periods = get_periods(current_period.date)
+    i = 0
+    for p in periods:
+        i = i + 1
+        if p['number'] == current_period.period:
+            break
+    next_period = periods[i]['number']
+    current_period_value = current_period.period
+    context_list = dict(current_period=current_period_value)
+    context_list['next_period'] = next_period
+    curr_list = RoomSlot.objects.filter(period=current_period.period, date=current_period.date)
+    next_list = RoomSlot.objects.filter(period=next_period, date=current_period.date)
+    list = []
+    for item in curr_list:
+        if item.reserved:
+            userString = item.checkout_email
+        else:
+            userString = ""
+        list.append(dict(room=get_room_name(item.room), current_user=userString, next_user=""))
+    for item in list:
+        for n in next_list:
+            if item['room'] == n.room and n.reserved:
+                item['next_user'] = n.checkout_email
+    context_list['list'] = list
+    return render_to_response('CollabCheckout/current_usage.html', context_list, context)
+
+def get_room_name(number):
+    number = int(number)
+    if number == 1:
+        roomString = "Collaboration Studio 1"
+    elif number ==  2:
+        roomString = "Collaboration Studio 2"
+    elif number == 3:
+        roomString = "Collaboration Studio 3"
+    elif number == 4:
+        roomString = "Collaboration Studio 4"
+    elif number == 5:
+        roomString = "Collaboration Studio 5"
+    elif number == 6:
+        roomString = "Collaboration Studio 6"
+    elif number == 7:
+        roomString = "Collaboration Studio 7"
+    elif number == 8:
+        roomString = "Collaboration Studio 8"
+    elif number == 9:
+        roomString = "Duncan Center 3"
+    elif number == 10:
+        roomString = "Duncan Center 4"
+    elif number == 11:
+        roomString = "Global Teleconferencing Center"
+    return roomString
