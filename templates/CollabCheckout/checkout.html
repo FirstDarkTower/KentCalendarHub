@@ -5,10 +5,20 @@
    <p>To check out a room, fill out the form below. If you have any questions, please contact <a href="mailto:iitsupport@kentdenver.org">iitsupport@kentdenver.org</a>.</p>
     <br>
    <div id="wrap">
-           <form id="myForm" method="post" action="/CollabCheckout/checkout/">
+           <form id="myForm" method="post" action="/collabcheckout/checkout/">
 
             {% csrf_token %}
-
+            {% if extra_error %}
+               <p style="color: red">{{ extra_error }}</p>
+            {% endif %}
+            {% if extra_message %}
+               <p>{{ extra_message}}</p>
+            {% endif %}
+            {% if form.errors %}
+                {% for errors in form.errors %}
+                    <p style="color: red">Invalid {{ errors }}<p>
+                {% endfor %}
+            {% endif %}
             <p><input type="text" name="email" id='email' placeholder="Email address" required="true"></p>
             <p id="DateName"><input type="text" value="" id="datepicker" name="date" placeholder="Date" required="true"/></p>
             <p id= "PeriodsName">Period:&nbsp;&nbsp;<select name ="period" id="Periods" required="true">

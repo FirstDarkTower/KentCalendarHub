@@ -7,8 +7,8 @@ class RoomSlotForm(forms.ModelForm):
 
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
     date = forms.DateField(widget=forms.TextInput(attrs={'placeholder': 'Date', 'id':'datepicker'}))
-    period = forms.ChoiceField(widget=forms.TextInput(attrs={'id':'PeriodsName'}))
-    room = forms.ChoiceField(widget=forms.TextInput(attrs={'id':'RoomsName'}))
+    period = forms.CharField(max_length=256, widget=forms.TextInput(attrs={'id':'PeriodsName'}))
+    room = forms.CharField(max_length=256, widget=forms.TextInput(attrs={'id':'RoomsName'}))
 
 
     class Meta:

@@ -88,41 +88,48 @@ from StudentSite import views
 # print new_periods
 #
 # print_list(Calendar.objects.filter(period=1))
+#
+# dateText = "8/20/2014"
+# period = 1
+# email = "aclement@kentdenver.org"
+#
+# rooms = []
+# date_array = str(dateText).split("/")
+# d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
+# rooms = RoomSlot.objects.filter(period=period, date=d, reserved=False)
+# new_rooms=[]
+# for r in rooms:
+#     number = int(r.room)
+#     if number == 1:
+#         roomString = "Collaboration Studio 1"
+#     elif number ==  2:
+#         roomString = "Collaboration Studio 2"
+#     elif number == 3:
+#         roomString = "Collaboration Studio 3"
+#     elif number == 4:
+#         roomString = "Collaboration Studio 4"
+#     elif number == 5:
+#         roomString = "Collaboration Studio 5"
+#     elif number == 6:
+#         roomString = "Collaboration Studio 6"
+#     elif number == 7:
+#         roomString = "Collaboration Studio 7"
+#     elif number == 8:
+#         roomString = "Collaboration Studio 8"
+#     elif number == 9 and str(email).find("1") == -1:
+#         roomString = "Duncan Center 3"
+#     elif number == 10 and str(email).find("1") == -1:
+#         roomString = "Duncan Center 4"
+#     elif number == 11 and str(email).find("1") == -1:
+#         roomString = "Global Teleconferencing Center"
+#     temp = dict(number=number, text=roomString)
+#     new_rooms.append(temp)
+#
+# print_list(new_rooms)
 
-dateText = "8/20/2014"
-period = 1
-email = "aclement@kentdenver.org"
+period = 4
+room= " 11"
+date= "2014-08-20"
 
-rooms = []
-date_array = str(dateText).split("/")
-d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
-rooms = RoomSlot.objects.filter(period=period, date=d, reserved=False)
-new_rooms=[]
-for r in rooms:
-    number = int(r.room)
-    if number == 1:
-        roomString = "Collaboration Studio 1"
-    elif number ==  2:
-        roomString = "Collaboration Studio 2"
-    elif number == 3:
-        roomString = "Collaboration Studio 3"
-    elif number == 4:
-        roomString = "Collaboration Studio 4"
-    elif number == 5:
-        roomString = "Collaboration Studio 5"
-    elif number == 6:
-        roomString = "Collaboration Studio 6"
-    elif number == 7:
-        roomString = "Collaboration Studio 7"
-    elif number == 8:
-        roomString = "Collaboration Studio 8"
-    elif number == 9 and str(email).find("1") == -1:
-        roomString = "Duncan Center 3"
-    elif number == 10 and str(email).find("1") == -1:
-        roomString = "Duncan Center 4"
-    elif number == 11 and str(email).find("1") == -1:
-        roomString = "Global Teleconferencing Center"
-    temp = dict(number=number, text=roomString)
-    new_rooms.append(temp)
+print RoomSlot.objects.get(room=room, period=period, date=date)
 
-print_list(new_rooms)

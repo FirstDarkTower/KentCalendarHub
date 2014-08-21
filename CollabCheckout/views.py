@@ -1,4 +1,5 @@
 from datetime import date
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
 
@@ -19,16 +20,16 @@ def get_periods(dateText = ""):
     day_type = RoomSlot.objects.filter(date=d)[0].day_type
     period_0 = dict(number=0, text="Before school")
     period_1 = dict(number=1, text="Period 1")
-    period_2 = dict(number=1, text="Period 2")
-    period_3 = dict(number=1, text="Period 3")
-    period_4 = dict(number=1, text="Period 4")
-    period_5 = dict(number=1, text="Period 5")
-    period_6 = dict(number=1, text="Period 6")
-    period_7 = dict(number=1, text="Period 7")
-    period_8 = dict(number=1, text="After school: 3:30-4:30")
-    period_9 = dict(number=1, text="After school: 4:30-5:30")
-    period_10 = dict(number=1, text="First half of lunch")
-    period_11 = dict(number=1, text="Second half of lunch")
+    period_2 = dict(number=2, text="Period 2")
+    period_3 = dict(number=3, text="Period 3")
+    period_4 = dict(number=4, text="Period 4")
+    period_5 = dict(number=5, text="Period 5")
+    period_6 = dict(number=6, text="Period 6")
+    period_7 = dict(number=7, text="Period 7")
+    period_8 = dict(number=8, text="After school: 3:30-4:30")
+    period_9 = dict(number=9, text="After school: 4:30-5:30")
+    period_10 = dict(number=10, text="First half of lunch")
+    period_11 = dict(number=11, text="Second half of lunch")
     if day_type == "A":
         periods = [period_0, period_1, period_3, period_4, period_6, period_7, period_8, period_9, period_10, period_11]
     elif day_type == "B":
@@ -61,12 +62,29 @@ def checkout(request):
         form = RoomSlotForm(request.POST)
 
         if form.is_valid():
-            # Save the new category to the database.
-            #form.save(commit=True)
+
+            email = request.POST.get('email');
+            period =  request.POST.get('period');
+            room =  request.POST.get('room');
+            room = " " + str(room)
+            dateText =  request.POST.get('date');
+            date_array = str(dateText).split("/")
+            d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
+            print ("Period: " + period + " Room: " +room + " Date: " + d)
+            try:
+                room = RoomSlot.objects.get(period=period, room=room, date=d, reserved=False)
+            except ObjectDoesNotExist:
+                extra_error = "That room is already taken, please select another"
+                return render_to_response('CollabCheckout/checkout.html', {'form': form, "extra_error": extra_error}, context)
+            form = RoomSlotForm(request.POST, instance=room)
+            room.reserved = True;
+            room.checkout_email = email;
+            form.save(commit=True)
 
             # Now call the index() view.
             # The user will be shown the homepage.
-            return HttpResponse("It worked")
+            extra_message = "Checkout successful!"
+            return render_to_response('CollabCheckout/checkout.html', {'form': form, "extra_message": extra_message}, context)
         else:
             # The supplied form contained errors - just print them to the terminal.
             print form.errors
@@ -141,3 +159,4 @@ def room_list(request):
     rooms = get_room_list(period, dateText, email)
     context_list = dict(options = rooms)
     return render_to_response('CollabCheckout/option_list.html', context_list, context)
+
