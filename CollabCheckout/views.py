@@ -1,11 +1,12 @@
 from datetime import date, datetime, timedelta
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
 
 # Create your views here.
 from django.template.context import RequestContext
-from CollabCheckout.forms import RoomSlotForm
+from CollabCheckout.forms import RoomSlotForm, ManyRoomSlotForm
 from CollabCheckout.models import RoomSlot
 
 
@@ -176,18 +177,23 @@ def active_rooms(request):
         current_period = RoomSlot.objects.filter(start_time__lte = time, end_time__gte = end_time, date = d)[0]
     except IndexError:
         return render_to_response('CollabCheckout/current_usage.html', {'current_period':"None", 'next_period':"None", 'list' : []}, context)
-    periods = get_periods(current_period.date)
+    periods = RoomSlot.objects.filter(date=d, room=current_period.room).order_by('start_time')
     i = 0
     for p in periods:
         i = i + 1
-        if p['number'] == current_period.period:
+        if p.period == current_period.period:
             break
-    next_period = periods[i]['number']
+    try:
+        next_period = periods[i].period
+    except IndexError:
+        next_period = -1;
     current_period_value = current_period.period
-    context_list = dict(current_period=current_period_value)
-    context_list['next_period'] = next_period
+    context_list = dict(current_period=get_period_name(current_period_value))
+    context_list['next_period'] = get_period_name(next_period)
     curr_list = RoomSlot.objects.filter(period=current_period.period, date=current_period.date)
-    next_list = RoomSlot.objects.filter(period=next_period, date=current_period.date)
+    next_list = []
+    if next_period != -1:
+        next_list = RoomSlot.objects.filter(period=next_period, date=current_period.date)
     list = []
     for item in curr_list:
         if item.reserved:
@@ -227,3 +233,75 @@ def get_room_name(number):
     elif number == 11:
         roomString = "Global Teleconferencing Center"
     return roomString
+
+def get_period_name(number):
+        number = int(number)
+        if number == 0:
+            periodString = "Before school"
+        elif number == 1:
+            periodString = "Period 1"
+        elif number ==  2:
+            periodString = "Period 2"
+        elif number == 3:
+            periodString = "Period 3"
+        elif number == 4:
+            periodString = "Period 4"
+        elif number == 5:
+            periodString = "Period 5"
+        elif number == 6:
+            periodString = "Period 6"
+        elif number == 7:
+            periodString = "Period 7"
+        elif number == 8:
+            periodString = "After school: 3:30-4:30"
+        elif number == 9:
+            periodString = "After school: 4:30-5:30"
+        elif number == 10:
+            periodString = "First half of lunch"
+        elif number == 11:
+            periodString = "Second half of lunch"
+        elif number == -1:
+            periodString = "None"
+        return periodString
+
+#@login_required
+def checkout_many_rooms(request):
+    context = RequestContext(request)
+
+    if request.method == 'POST':
+        form = ManyRoomSlotForm(request.POST)
+
+        if form.is_valid():
+
+            email = request.POST.get('email');
+            period =  request.POST.get('period');
+            room =  request.POST.get('room');
+            room = " " + str(room)
+            dateText =  request.POST.get('date');
+            date_array = str(dateText).split("/")
+            d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
+            print ("Period: " + period + " Room: " +room + " Date: " + d)
+            #try:
+            #    room = RoomSlot.objects.get(period=period, room=room, date=d, reserved=False)
+            #except ObjectDoesNotExist:
+            #    extra_error = "That room is already taken, please select another"
+            #    return render_to_response('CollabCheckout/checkout.html', {'form': form, "extra_error": extra_error}, context)
+            form = ManyRoomSlotForm(request.POST, instance=room)
+            #room.reserved = True;
+            #room.checkout_email = email;
+            #form.save(commit=True)
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            extra_message = "Checkout successful!"
+            return render_to_response('CollabCheckout/checkout.html', {'form': form, "extra_message": extra_message}, context)
+        else:
+            # The supplied form contained errors - just print them to the terminal.
+            print form.errors
+    else:
+        # If the request was not a POST, display the form to enter details.
+        form = ManyRoomSlotForm()
+
+    # Bad form (or form details), no form supplied...
+    # Render the form with error messages (if any).
+    return render_to_response('CollabCheckout/manycheckout.html', {'form': form}, context)

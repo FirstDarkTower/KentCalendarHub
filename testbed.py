@@ -131,11 +131,7 @@ from StudentSite import views
 
 period = 4
 room= " 11"
-date= "2014-08-20"
 
-room = RoomSlot.objects.get(room=room, period=period, date=date)
+rooms = RoomSlot.objects.filter(room=room, period=period)
 
-time = datetime.now().time().replace(hour=10, minute=0)
-d = datetime.now().date()
-end_time = datetime.now().replace(hour=10, minute=0) - timedelta(minutes=5)
-print_list(RoomSlot.objects.filter(start_time__lte = time, end_time__gte = end_time, date=d))
+print_list(rooms);

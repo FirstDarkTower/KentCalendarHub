@@ -3,6 +3,7 @@
  */
 
 $('document').ready(function() {
+    setInterval(function(){cache_clear()},120000);
     $('#datepicker').datepicker({
         onSelect:function() {
             var dateText = $('#datepicker').val();
@@ -26,3 +27,7 @@ $('document').ready(function() {
     });
 });
 
+function cache_clear()
+{
+ window.location.reload(true);
+}
