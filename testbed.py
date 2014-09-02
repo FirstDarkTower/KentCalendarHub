@@ -134,4 +134,6 @@ room= " 11"
 
 rooms = RoomSlot.objects.filter(room=room, period=period)
 
-print_list(rooms);
+for r in rooms:
+    print r.start_time
+

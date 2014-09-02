@@ -75,6 +75,8 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
+LOGIN_URL = '/collabcheckout/login/'
+
 TIME_ZONE = 'America/Denver'
 
 USE_I18N = True

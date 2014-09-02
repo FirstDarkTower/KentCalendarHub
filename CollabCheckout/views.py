@@ -1,7 +1,9 @@
 from datetime import date, datetime, timedelta
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse
+from django.db.transaction import commit
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 
 # Create your views here.
@@ -264,7 +266,7 @@ def get_period_name(number):
             periodString = "None"
         return periodString
 
-#@login_required
+@login_required
 def checkout_many_rooms(request):
     context = RequestContext(request)
 
@@ -277,24 +279,16 @@ def checkout_many_rooms(request):
             period =  request.POST.get('period');
             room =  request.POST.get('room');
             room = " " + str(room)
-            dateText =  request.POST.get('date');
-            date_array = str(dateText).split("/")
-            d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
-            print ("Period: " + period + " Room: " +room + " Date: " + d)
-            #try:
-            #    room = RoomSlot.objects.get(period=period, room=room, date=d, reserved=False)
-            #except ObjectDoesNotExist:
-            #    extra_error = "That room is already taken, please select another"
-            #    return render_to_response('CollabCheckout/checkout.html', {'form': form, "extra_error": extra_error}, context)
-            form = ManyRoomSlotForm(request.POST, instance=room)
-            #room.reserved = True;
-            #room.checkout_email = email;
-            #form.save(commit=True)
-
+            rooms = RoomSlot.objects.filter(period=period, room=room)
+            for r in rooms:
+                r.checkout_email = email
+                r.reserved = True
+                r.save()
+            print rooms;
             # Now call the index() view.
             # The user will be shown the homepage.
-            extra_message = "Checkout successful!"
-            return render_to_response('CollabCheckout/checkout.html', {'form': form, "extra_message": extra_message}, context)
+            extra_message = str(len(rooms)) + " Checkout(s) successful!"
+            return render_to_response('CollabCheckout/manycheckout.html', {'form': form, "extra_message": extra_message}, context)
         else:
             # The supplied form contained errors - just print them to the terminal.
             print form.errors
@@ -305,3 +299,44 @@ def checkout_many_rooms(request):
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
     return render_to_response('CollabCheckout/manycheckout.html', {'form': form}, context)
+
+def user_login(request):
+    # Like before, obtain the context for the user's request.
+    context = RequestContext(request)
+
+
+    # If the request is a HTTP POST, try to pull out the relevant information.
+    if request.method == 'POST':
+        # Gather the username and password provided by the user.
+        # This information is obtained from the login form.
+        username = request.POST['username']
+        password = request.POST['password']
+
+        # Use Django's machinery to attempt to see if the username/password
+        # combination is valid - a User object is returned if it is.
+        user = authenticate(username=username, password=password)
+        print user
+        # If we have a User object, the details are correct.
+        # If None (Python's way of representing the absence of a value), no user
+        # with matching credentials was found.
+        if user:
+            # Is the account active? It could have been disabled.
+            if user.is_active:
+                # If the account is valid and active, we can log the user in.
+                # We'll send the user back to the homepage.
+                login(request, user)
+                return HttpResponseRedirect('/collabcheckout/manycheckouts')
+            else:
+                # An inactive account was used - no logging in!
+                return HttpResponse("Your account is disabled.")
+        else:
+            # Bad login details were provided. So we can't log the user in.
+            print "Invalid login details: {0}, {1}".format(username, password)
+            return HttpResponse("Invalid login details supplied.")
+
+    # The request is not a HTTP POST, so display the login form.
+    # This scenario would most likely be a HTTP GET.
+    else:
+        # No context variables to pass to the template system, hence the
+        # blank dictionary object...
+        return render_to_response('collabcheckout/login.html', {}, context)
