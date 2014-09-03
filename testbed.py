@@ -33,7 +33,7 @@ def format_time(time):
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KentCalendarHub.settings")
 from StudentSite.models import Calendar
 from CollabCheckout.models import RoomSlot
-from CollabCheckout.views import get_periods, get_room_name
+from CollabCheckout.views import get_periods, get_room_name, get_period_name
 from StudentSite import views
 
 # temp = Calendar.objects.filter(period = 2, class_title__istartswith="AP")
@@ -130,10 +130,54 @@ from StudentSite import views
 # print_list(new_rooms)
 
 period = 4
-room= " 11"
+room = " 5"
 
-rooms = RoomSlot.objects.filter(room=room, period=period)
+date_source = datetime.now()
+time = date_source.time()
+end_time = date_source - timedelta(minutes=5)
+d = date_source.date
+current_period = RoomSlot.objects.filter(start_time__lte = time, end_time__gte = end_time, date = d)[0]
 
-for r in rooms:
-    print r.start_time
+print current_period
+
+periods = RoomSlot.objects.filter(date=d, room=current_period.room).order_by('start_time')
+print periods
+
+i = 0
+for p in periods:
+    i = i + 1
+    if p.period == current_period.period:
+        break
+try:
+    next_period = periods[i].period
+except IndexError:
+    next_period = -1;
+
+print next_period
+
+current_period_value = current_period.period
+context_list = dict(current_period=get_period_name(current_period_value))
+context_list['next_period'] = get_period_name(next_period)
+curr_list = RoomSlot.objects.filter(period=current_period.period, date=current_period.date)
+next_list = []
+if next_period != -1:
+    next_list = RoomSlot.objects.filter(period=next_period, date=current_period.date)
+
+print next_list
+
+list = []
+for item in curr_list:
+    if item.reserved:
+        userString = item.checkout_email
+    else:
+        userString = ""
+    list.append(dict(room=get_room_name(item.room), current_user=userString, next_user=""))
+for item in list:
+    print item
+    for n in next_list:
+
+        if item['room'] == get_room_name(n.room) and n.reserved:
+            item['next_user'] = n.checkout_email
+
+print list
 

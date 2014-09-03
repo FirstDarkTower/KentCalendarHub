@@ -205,7 +205,7 @@ def active_rooms(request):
         list.append(dict(room=get_room_name(item.room), current_user=userString, next_user=""))
     for item in list:
         for n in next_list:
-            if item['room'] == n.room and n.reserved:
+            if item['room'] == get_room_name(n.room) and n.reserved:
                 item['next_user'] = n.checkout_email
     context_list['list'] = list
     return render_to_response('CollabCheckout/current_usage.html', context_list, context)
@@ -325,7 +325,7 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponseRedirect('/collabcheckout/manycheckouts')
+                return HttpResponseRedirect('/collabcheckout/manycheckouts/')
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your account is disabled.")
@@ -339,4 +339,4 @@ def user_login(request):
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('collabcheckout/login.html', {}, context)
+        return render_to_response('CollabCheckout/login.html', {}, context)
