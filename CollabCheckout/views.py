@@ -142,6 +142,10 @@ def get_room_list(period, dateText, email):
             roomString = "Collaboration Studio 8"
             temp = dict(number=number, text=roomString)
             new_rooms.append(temp)
+        elif number == 12:
+            roomString = "Collaboration Studio 9"
+            temp = dict(number=number, text=roomString)
+            new_rooms.append(temp)
         elif number == 9 and str(email).find("1") == -1 and str(email) != "":
             roomString = "Duncan Center 3"
             temp = dict(number=number, text=roomString)
@@ -154,6 +158,15 @@ def get_room_list(period, dateText, email):
             roomString = "Global Teleconferencing Center"
             temp = dict(number=number, text=roomString)
             new_rooms.append(temp)
+    for n in new_rooms:
+        if n['text'] == "Collaboration Studio 9":
+            i = new_rooms.index(n)
+        if n['text'] == "Collaboration Studio 8":
+            i2 = new_rooms.index(n)
+
+    temp = new_rooms[i]
+    new_rooms.remove(new_rooms[i])
+    new_rooms.insert(i2+1, temp)
 
     return new_rooms
 
@@ -207,7 +220,15 @@ def active_rooms(request):
         for n in next_list:
             if item['room'] == get_room_name(n.room) and n.reserved:
                 item['next_user'] = n.checkout_email
+
+    temp = list[11]
+    list[11] = list[10]
+    list[10] = list[9]
+    list[9] = list[8]
+    list[8] = temp
+
     context_list['list'] = list
+
     return render_to_response('CollabCheckout/current_usage.html', context_list, context)
 
 def get_room_name(number):
@@ -234,6 +255,8 @@ def get_room_name(number):
         roomString = "Duncan Center 4"
     elif number == 11:
         roomString = "Global Teleconferencing Center"
+    elif number == 12:
+        roomString = "Collaboration Studio 9"
     return roomString
 
 def get_period_name(number):
