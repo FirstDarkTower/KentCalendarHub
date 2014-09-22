@@ -129,68 +129,51 @@ from StudentSite import views
 #
 # print_list(new_rooms)
 
-dateText="9/10/2014"
-period = "7"
-email = "aclement@kentdenver.org"
-rooms = []
-date_array = str(dateText).split("/")
-d = date(int(date_array[2]), int(date_array[0]), int(date_array[1])).isoformat()
-
-rooms = RoomSlot.objects.filter(period=period, date=d, reserved=False)
-print rooms
-new_rooms=[]
-for r in rooms:
-    number = int(r.room)
-    if number == 1:
-        roomString = "Collaboration Studio 1"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number ==  2:
-        roomString = "Collaboration Studio 2"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 3:
-        roomString = "Collaboration Studio 3"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 4:
-        roomString = "Collaboration Studio 4"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 5:
-        roomString = "Collaboration Studio 5"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 6:
-        roomString = "Collaboration Studio 6"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 7:
-        roomString = "Collaboration Studio 7"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 8:
-        roomString = "Collaboration Studio 8"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 12:
-        roomString = "Collaboration Studio 9"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 9 and str(email).find("1") == -1 and str(email) != "":
-        roomString = "Duncan Center 3"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 10 and str(email).find("1") == -1 and str(email) != "":
-        roomString = "Duncan Center 4"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-    elif number == 11 and str(email).find("1") == -1 and str(email) != "":
-        roomString = "Global Teleconferencing Center"
-        temp = dict(number=number, text=roomString)
-        new_rooms.append(temp)
-
-print_list(new_rooms)
 
 
-print_list(new_rooms)
+date_source = datetime.now()
+time = date_source.time()
+end_time = date_source - timedelta(minutes=5)
+d = date_source.date
+try:
+    current_period = RoomSlot.objects.filter(start_time__lte = time, end_time__gte = end_time, date = d)[0]
+except IndexError:
+    print "Oh noes"
+periods = RoomSlot.objects.filter(date=d, room=current_period.room).order_by('start_time')
+i = 0
+for p in periods:
+    i = i + 1
+    if p.period == current_period.period:
+        break
+print i
+try:
+    next_period = periods[i].period
+except IndexError:
+    next_period = -1;
+current_period_value = current_period.period
+context_list = dict(current_period=get_period_name(current_period_value))
+context_list['next_period'] = get_period_name(next_period)
+curr_list = RoomSlot.objects.filter(period=current_period.period, date=current_period.date)
+next_list = []
+if next_period != -1:
+    next_list = RoomSlot.objects.filter(period=next_period, date=current_period.date)
+list = []
+for item in curr_list:
+    if item.reserved:
+        userString = item.checkout_email
+    else:
+        userString = ""
+    list.append(dict(room=get_room_name(item.room), current_user=userString, next_user=""))
+for item in list:
+    for n in next_list:
+        if item['room'] == get_room_name(n.room) and n.reserved:
+            item['next_user'] = n.checkout_email
+
+temp = list[11]
+list[11] = list[10]
+list[10] = list[9]
+list[9] = list[8]
+list[8] = temp
+
+print list
+print context_list
