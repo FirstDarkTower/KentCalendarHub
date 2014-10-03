@@ -93,9 +93,6 @@ def sixth_page(request):
     context_list["homeroom"] = Calendar.objects.filter(class_title__contains="Homeroom", school=6).order_by('teacher_name')
     context_list["langarts"] = remove_period_duplicates(Calendar.objects.filter(class_title__contains="Language Arts", school=6).order_by('period'))
     context_list["socstud"] = remove_period_duplicates(Calendar.objects.filter(class_title__contains="Social Studies", school=6).order_by('period'))
-    context_list["electivesyear"] = Calendar.objects.filter(school="ELEC", semester='14-15').order_by('class_title')
-    context_list["electivesS1"] = Calendar.objects.filter(school="ELEC", semester='S1').order_by('class_title')
-    context_list["electivesS2"] = Calendar.objects.filter(school="ELEC", semester='S2').order_by('class_title')
     context_list["rotation"] = ["1", "2", "3", "4"]
 
     return render_to_response("StudentSite/sixth.html", context_list, context)
@@ -133,4 +130,7 @@ def sixth_rotations(request):
 def other_calendars(request):
     context = RequestContext(request)
     context_list = dict(other_cals=Calendar.objects.filter(school='other'));
+    context_list["electivesyear"] = Calendar.objects.filter(school="ELEC", semester='14-15').order_by('class_title')
+    context_list["electivesS1"] = Calendar.objects.filter(school="ELEC", semester='S1').order_by('class_title')
+    context_list["electivesS2"] = Calendar.objects.filter(school="ELEC", semester='S2').order_by('class_title')
     return render_to_response('StudentSite/other_calendars.html', context_list, context)

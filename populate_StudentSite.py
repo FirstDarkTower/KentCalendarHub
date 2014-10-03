@@ -17,9 +17,20 @@ def populate():
        lineArray = line.split('\t')
        if not lineArray[0]== "Period":
             makeCalendar(lineArray[0], lineArray[2], lineArray[3].strip('"'), lineArray[7], lineArray[1], lineArray[11])
+            #print  lineArray[0], lineArray[2], lineArray[3].strip('"'), lineArray[7], lineArray[1], lineArray[11]
+
+
+def remove_electives():
+    electives = Calendar.objects.filter(school="ELEC")
+    for e in electives:
+        e.delete()
+    print electives
+
 
 if __name__ == "__main__":
     print "Populating Student Site.........."
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KentCalendarHub.settings")
     from StudentSite.models import Calendar
     populate()
+    #remove_electives()
+

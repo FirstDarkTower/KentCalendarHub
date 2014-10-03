@@ -158,15 +158,16 @@ def get_room_list(period, dateText, email):
             roomString = "Global Teleconferencing Center"
             temp = dict(number=number, text=roomString)
             new_rooms.append(temp)
+    i = -1;
     for n in new_rooms:
         if n['text'] == "Collaboration Studio 9":
             i = new_rooms.index(n)
         if n['text'] == "Collaboration Studio 8":
             i2 = new_rooms.index(n)
-
-    temp = new_rooms[i]
-    new_rooms.remove(new_rooms[i])
-    new_rooms.insert(i2+1, temp)
+    if i > 0:
+        temp = new_rooms[i]
+        new_rooms.remove(new_rooms[i])
+        new_rooms.insert(i2+1, temp)
 
     return new_rooms
 
@@ -187,7 +188,7 @@ def active_rooms(request):
     date_source = datetime.now()
     time = date_source.time()
     end_time = date_source - timedelta(minutes=5)
-    d = date_source.date
+    d = date_source.date()
     try:
         current_period = RoomSlot.objects.filter(start_time__lte = time, end_time__gte = end_time, date = d)[0]
     except IndexError:

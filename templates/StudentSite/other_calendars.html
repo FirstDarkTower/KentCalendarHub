@@ -87,6 +87,58 @@ background-color: #990000">
 		</div>
 	</div>
 </div>
+<div class = "label" class="electivesdiv" style = "top: 60%">
+
+<div style = "position: absolute; top: 6%; left: 8.5%; color: black; font-size: 18px;">
+       Year Long:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 6%; top: 10%;" id="electivesyear">
+        <option value = ""></option>
+        {% for item in electivesyear %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 40%; top: 10%; " id="electivesyearcalid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div style = "position: absolute; top: 14.5%; left: 8.5%; color: black; font-size: 18px;">
+       Semester 1:
+    </div>
+	<div>
+       <select class="border" style = "position: absolute; left: 6%; top: 18%;" id="electivesS1">
+        <option value = ""></option>
+        {% for item in electivesS1 %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 40%; top: 18%; " id="electivesS1calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+
+    <div style = "position: absolute; top: 22.5%; left: 8.5%; color: black; font-size: 18px;">
+       Semester 2:
+    </div>
+<div>
+       <select class="border" style = "position: absolute; left: 6%; top: 26%;" id="electivesS2">
+        <option value = ""></option>
+        {% for item in electivesS2 %}
+            <option value = "{{ item.class_title }}">{{ item.class_title }}</option>
+        {% endfor %}
+    </select>
+	</div>
+	<div style = "position: absolute; left: 40%; top: 26%; " id="electivesS2calid">
+		<div class = "border" style = "left: 50px; width: 500px;">
+		</div>
+	</div>
+    <div class = "period" style = "left: -5%;">
+        Middle School Electives
+    </div>
 
 <script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
 <script src="{% static "js/studentsite-ajax.js" %}"></script

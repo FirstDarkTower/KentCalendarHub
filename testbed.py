@@ -134,46 +134,14 @@ from StudentSite import views
 date_source = datetime.now()
 time = date_source.time()
 end_time = date_source - timedelta(minutes=5)
-d = date_source.date
-try:
-    current_period = RoomSlot.objects.filter(start_time__lte = time, end_time__gte = end_time, date = d)[0]
-except IndexError:
-    print "Oh noes"
-periods = RoomSlot.objects.filter(date=d, room=current_period.room).order_by('start_time')
-i = 0
-for p in periods:
-    i = i + 1
-    if p.period == current_period.period:
-        break
-print i
-try:
-    next_period = periods[i].period
-except IndexError:
-    next_period = -1;
-current_period_value = current_period.period
-context_list = dict(current_period=get_period_name(current_period_value))
-context_list['next_period'] = get_period_name(next_period)
-curr_list = RoomSlot.objects.filter(period=current_period.period, date=current_period.date)
-next_list = []
-if next_period != -1:
-    next_list = RoomSlot.objects.filter(period=next_period, date=current_period.date)
-list = []
-for item in curr_list:
-    if item.reserved:
-        userString = item.checkout_email
-    else:
-        userString = ""
-    list.append(dict(room=get_room_name(item.room), current_user=userString, next_user=""))
-for item in list:
-    for n in next_list:
-        if item['room'] == get_room_name(n.room) and n.reserved:
-            item['next_user'] = n.checkout_email
+d = date_source.date()
 
-temp = list[11]
-list[11] = list[10]
-list[10] = list[9]
-list[9] = list[8]
-list[8] = temp
+print time
+print end_time
+print date_source.date()
 
-print list
-print context_list
+current_period = RoomSlot.objects.filter(start_time__lte = time, end_time__gte = end_time, date = d)[0]
+print current_period
+
+
+

@@ -14,8 +14,6 @@ $('document').ready(function() {
         } else if (document.title == "Class Calendars - Sixth Grade"){
             if(source.id.indexOf("homeroom") > -1) {
                 sixthhomeroomchanged(source.id);
-            } else if(source.id.indexOf("electives") > -1) {
-                sixthelectivechanged(source.id);
             } else if(source.id.indexOf("class") > -1){
                 sixthclasschanged(source.id);
             } else if(source.id.indexOf('teacher') > -1){
@@ -24,8 +22,11 @@ $('document').ready(function() {
                 rotationchanged(source.id)
             }
         } else if (document.title == "Class Calendars - Other Calendars") {
+            console.log(source.id);
             if(source.id.indexOf('other') > -1){
                 otherchanged(source.id);
+            } else if(source.id.indexOf("electives") > -1) {
+                otherelectivechanged(source.id);
             }
         }
 
@@ -121,7 +122,7 @@ function sixthhomeroomchanged(id) {
     });
 }
 
-function sixthelectivechanged(id) {
+function otherelectivechanged(id) {
     var period = 8;
     var class_title = $('#'+id).val();
     $.get('/studentsite/cal_id/', {class_name: class_title, period: period, teacher_name: ""}, function(data){
