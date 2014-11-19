@@ -1,5 +1,6 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
+from twisted.protocols.ftp import REQ_ACTN_ABRTD_FILE_UNAVAIL
 from StudentSite.models import Calendar
 from collections import OrderedDict
 
@@ -129,7 +130,7 @@ def sixth_rotations(request):
 
 def other_calendars(request):
     context = RequestContext(request)
-    context_list = dict(other_cals=Calendar.objects.filter(school='other'));
+    context_list = dict(other_cals=Calendar.objects.filter(school='other'))
     context_list["electivesyear"] = Calendar.objects.filter(school="ELEC", semester='14-15').order_by('class_title')
     context_list["electivesS1"] = Calendar.objects.filter(school="ELEC", semester='S1').order_by('class_title')
     context_list["electivesS2"] = Calendar.objects.filter(school="ELEC", semester='S2').order_by('class_title')

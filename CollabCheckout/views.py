@@ -364,3 +364,9 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render_to_response('CollabCheckout/login.html', {}, context)
+
+
+def colab_stats(request):
+    context = RequestContext(request)
+    context_list = dict()
+    return render_to_response('CollabCheckout/collab_stats.html', context_list, context)

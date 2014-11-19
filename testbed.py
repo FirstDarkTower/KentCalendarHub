@@ -143,5 +143,13 @@ print date_source.date()
 current_period = RoomSlot.objects.filter(start_time__lte = time, end_time__gte = end_time, date = d)[0]
 print current_period
 
+period_usage = []
+all_meetings = RoomSlot.objects.all()
+for i in range(1,13):
+    room_meetings = RoomSlot.objects.filter(room=i)
+    for j in room_meetings:
+        if j.reserved:
+            print j.period
+
 
 
