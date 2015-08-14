@@ -147,7 +147,7 @@ def get_room_list(period, dateText, email):
             temp = dict(number=number, text=roomString)
             new_rooms.append(temp)
         elif number == 9 and str(email).find("1") == -1 and str(email) != "":
-            roomString = "Duncan Center 3"
+            roomString = "Balcony Conference Table"
             temp = dict(number=number, text=roomString)
             new_rooms.append(temp)
         elif number == 10 and str(email).find("1") == -1 and str(email) != "":
@@ -251,13 +251,11 @@ def get_room_name(number):
     elif number == 8:
         roomString = "Collaboration Studio 8"
     elif number == 9:
-        roomString = "Duncan Center 3"
+        roomString = "Balcony Conference Table"
     elif number == 10:
         roomString = "Duncan Center 4"
     elif number == 11:
         roomString = "Global Teleconferencing Center"
-    elif number == 12:
-        roomString = "Collaboration Studio 9"
     return roomString
 
 def get_period_name(number):
