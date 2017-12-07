@@ -12,7 +12,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^caladmin/', include(admin.site.urls)),
-    #url(r'^studentsite/', include('StudentSite.urls')),
     url(r'^collabcheckout/', include('CollabCheckout.urls')),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/kentdenver.png')),
 

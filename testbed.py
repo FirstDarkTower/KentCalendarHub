@@ -31,10 +31,8 @@ def format_time(time):
     return hours +":"+mins
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KentCalendarHub.settings")
-from StudentSite.models import Calendar
 from CollabCheckout.models import RoomSlot
 from CollabCheckout.views import get_periods, get_room_name, get_period_name
-from StudentSite import views
 
 # temp = Calendar.objects.filter(period = 2, class_title__istartswith="AP")
 #
